@@ -59,9 +59,12 @@
 :nnoremap <C-s> :w<cr>
 " vim 编辑状态下的保存：<esc>退出编辑模式，:w 保存，<cr> 回车，a 回到编辑模式
 :inoremap <C-s> <esc>:w<cr>a
+" 一次性保存所有打开的文件，并关闭 VIM
+:nnoremap <C-q> :wa<cr>:qa!<cr>
+:inoremap <C-q> <esc>:wa<cr>:qa!<cr>
 " 保存并关闭当前缓冲区
-:nnoremap <C-q> :w<cr>:BufferClose<cr>
-:inoremap <C-q> <esc>:w<cr>:BufferClose<cr>
+:nnoremap <C-s><C-s> :w<cr>:BufferClose<cr>
+:inoremap <C-s><C-s> <esc>:w<cr>:BufferClose<cr>
 " 撤销
 :nnoremap <C-z> :u<cr>
 :inoremap <C-z> <esc>:u<cr>a
