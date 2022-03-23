@@ -1,0 +1,23 @@
+#!/bin/zsh
+
+# 输出帮助信息
+if [[ "$1" == "--help" ]]; then
+    printf "command: %-${interval}s %s\n" 'uninstall [package name]' "卸载软件包，并清理不再使用的依赖。如果没有指定软件包，则只清理依赖。"
+    exit 0
+fi
+
+# 卸载软件
+if [[ "$1" != "" ]]; then
+    yay -Rc "$1"
+fi
+
+# 清理依赖
+while true; do
+    tree=$(yay -Qdtq)
+    if [[ "$tree" == "" ]]; then
+        break
+    fi
+    yay -Rc --noconfirm $(yay -Qdtq)
+done
+# 清理下载的安装包
+yay -Scc --noconfirm

@@ -1,0 +1,65 @@
+#!/bin/zsh
+
+# 从快搜数据接口查询数据
+# author: aszswaz
+
+source "${HOME}/.config/bicycle-config/zhiwedata.zsh"
+
+cd $(dirname $0)
+alias curl="curl --disable -s"
+
+ARGS=($@)
+MONTH=$(date "+%Y-%m-01 00:00:00")
+
+for TITLE in $ARGS; do
+    echo "===============================================================================================================================" >&2
+    echo "Title: $TITLE" >&2
+    QUERY_JSON="
+    {
+        \"taskType\": \"\",
+        \"appId\": \"61a9767edd4f0000860066d2\",
+        \"taskDescription\": \"文章相似度匹配服务\",
+        \"taskName\": \"$TITLE\",
+        \"userName\": \"rss-article-similarity\",
+        \"searchParams\":{
+            \"wtype\": null,
+            \"matchFields\": null,
+            \"excludeDomainList\": null,
+            \"crawlerWord\": \"$TITLE\",
+            \"pageSize\": 100,
+            \"crawlerTime\": null,
+            \"startTime\": $(($(date '+%s' -d "$MONTH") * 1000)),
+            \"sortOf\": \"stime+asc\",
+            \"endTime\": $(($(date '+%s') * 1000)),
+            \"page\": 1,
+            \"filterWord\": null,
+            \"platforms\": \"新闻,论坛,博客,新浪微博,平媒,微信,视频,APP,短视频\"
+        }
+    }"
+
+    response=$(curl -XPOST -H "Content-Type: application/json" -d "$QUERY_JSON" "$QUICK_TASK_API")
+    code=$(echo "$response" | jq ".code")
+    [[ $code != "200" ]] && echo "$(echo "$respone" | jq .)" && exit 1
+    TASK_ID=$(echo "$response" | jq -r ".data.id")
+    echo "Get task id: $TASK_ID" >&2
+
+    while true; do
+        sleep 10
+        response=$(curl "$QUICK_DATA_API?taskId=$TASK_ID&appId=$QUICK_SEARCH_APPID01")
+        crawlerFinish=$(echo "$response" | jq -r '.data.task.crawlerFinish')
+        if [[ $crawlerFinish == '-1' || $crawlerFinish == '0' ]]; then
+            echo -e "\033[93mData is being queried, please wait.\033[0m" >&2
+            continue
+        elif [[ $crawlerFinish == '1' ]]; then
+            echo -e "\033[92mThe data query of the Starlight Quick Search interface is successful.\033[0m" >&2
+            echo "$response" | jq .
+            exit 0
+        elif [[ $crawlerFinish == '2' ]]; then
+            echo -e "\033[91mThe data query of the Starlight Quick Search interface timed out.\033[0m" >&2
+            exit 1
+        else
+            echo -e "\033[91mUnknown crawlerFinish.\033[0m" >&2
+            exit 1
+        fi
+    done
+done

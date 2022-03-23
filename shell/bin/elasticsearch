@@ -1,0 +1,30 @@
+#!/bin/zsh
+
+# 查询 elasticsearch 数据库
+
+source ~/.config/bicycle-config/zhiwedata.zsh
+
+cd $(dirname $0)
+alias curl="curl --disable -s"
+unset no_proxy http_proxy https_proxy
+
+WORDS=($@)
+MONTH=$(date "+%Y%m")
+INDICES="complete_text_$MONTH,incomplete_text_$MONTH,qa_text_$MONTH,video_$MONTH"
+
+for word in $WORDS; do
+    QUERY="
+        {
+            \"query\": {
+                \"match_phrase\": {
+                    \"ind_full_text\": \"$word\"
+                }
+            }
+        }
+    "
+
+    curl "http://${DATABASES_IPV4}:${ELASTICSEARCH_PORT}/$INDICES/_search" \
+        -u "$ELASTICSEARCH_ACCOUNT:$ELASTICSEARCH_PASSWORD" \
+        -H "Content-Type: application/json" \
+        -d "$QUERY" | jq '.'
+done

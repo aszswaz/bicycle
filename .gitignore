@@ -1,0 +1,16 @@
+# builder
+./bin
+
+# python
+venv
+__pycache__
+
+# java
+*.class
+*.jar
+*.war
+
+# archive file
+*.tar.gz
+*.zip
+*.7z

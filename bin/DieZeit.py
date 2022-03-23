@@ -1,0 +1,1 @@
+/home/aszswaz/document/bicycle/python/DieZeit.py
