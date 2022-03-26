@@ -35,3 +35,7 @@ alias cmake_make="cmake -S ./ -B ./builder -DCMAKE_EXPORT_COMPILE_COMMANDS=on &&
 alias tree="tree -I '.git' -I 'node_modules' -I 'electron-builder'"
 # 加载 node_modules/bin 到 PATH
 alias source_node_bin="test -d ./node_modules/.bin && NODE_BIN='$(pwd)/node_modules/.bin' && test '$NODE_BIN' '=~' '$PATH' || PATH=$PATH:$NODE_BIN"
+
+# mongodb 的链接信息都存储在 ~/.mongorc.js 中所以这里就不需要在参数中进行指定
+alias mongo="mongo --nodb"
+alias mongosh="mongosh --nodb"
