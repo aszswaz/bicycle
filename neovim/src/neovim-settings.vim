@@ -69,8 +69,8 @@
 :nnoremap <C-z> :u<cr>
 :inoremap <C-z> <esc>:u<cr>a
 " 重做
-:nnoremap <S-z> :redo<cr>
-:inoremap <S-z> <esc>:redo<cr>a
+:nnoremap <A-z> :redo<cr>
+:inoremap <A-z> <esc>:redo<cr>a
 " 普通模式删除行
 :nnoremap <C-y> dd<End>
 " 编辑模式删除行，并吧光标移动到行尾
