@@ -12,6 +12,8 @@ alias edit_public_alias="nvim $0; source $0"
 
 # 覆盖cp命令
 alias cp="cp -v -r"
+# mkdir 自动创建父文件夹，以及显示文件夹创建信息
+alias mkdir="mkdir -v -p"
 # 覆盖rm命令，递归删除文件夹
 alias rm="rm -r"
 # 列出文档仓库中所有的文本文件
