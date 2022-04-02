@@ -119,6 +119,9 @@
 :inoremap <C-t><C-s> <esc>:TranslateW<cr>A
 :nnoremap <C-t><C-s> <esc>:TranslateW<cr>
 :vnoremap <C-t><C-s> :TranslateW<cr>
+" 移动光标到第一个非空格字符
+:nnoremap <Home> ^
+:inoremap <Home> <esc>^a
 
 " 写出文件之前，删除尾部空格
 :autocmd BufWritePre * :%s/\s\+$//e

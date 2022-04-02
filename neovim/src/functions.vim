@@ -30,7 +30,7 @@ function FileFormat()
     elseif filetype == 'javascript'
         %!js-beautify
     elseif filetype == 'python'
-        %!autopep8 -
+        %!autopep8 --max-line-length 10000 -
     elseif filetype == 'lua'
         %!stylua - --indent-type Spaces --indent-width 4
     elseif filetype == 'tex'
