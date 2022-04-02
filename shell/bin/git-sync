@@ -72,7 +72,7 @@ function push() {
         # 将代码提交到git的所有仓库
         echo "Pushing to remote repository: ${depository}."
         # 执行推送操作，通过timeout执行git，可以在git推送超时的情况下，强制KILL
-        timeout git push $depository $branch
+        timeout git push --tags $depository $branch
     done
     # IFS 变是全局共享的，用完需要重置
     unset IFS
