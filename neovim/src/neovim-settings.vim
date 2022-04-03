@@ -38,8 +38,8 @@
 :hi MatchParen ctermbg=NONE ctermfg=green
 " 设置状态栏显示文件名和文件路径
 :set laststatus=2
-" 开启自动换行
-:set wrap
+" 自动换行
+:set nowrap
 " 文件在外部被修改，自动更新
 :set autoread
 " neovim 会在文本长度达到 78 时，自动添加 \n 拆行，如果直接 :set textwidth=0 那么 textwidth 会在其他的脚本当中被设置为 78，所以这里通过关闭文本格式化的方式，达到禁用该功能的目的
