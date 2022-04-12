@@ -25,7 +25,7 @@ function FileFormat()
         %!jq .
     elseif filetype == 'cpp'
         %!astyle --style=attach --pad-oper --lineend=linux -N -C -L -xw -xW -w
-    elseif filetype == 'zsh' || filetype == 'sh'
+    elseif filetype == 'sh'
         %!shfmt -i 4
     elseif filetype == 'javascript'
         %!js-beautify
@@ -33,7 +33,7 @@ function FileFormat()
         %!autopep8 --max-line-length 10000 -
     elseif filetype == 'lua'
         %!stylua - --indent-type Spaces --indent-width 4
-    elseif filetype == 'tex'
+    elseif filetype == 'tex' || filetype == "plaintex"
         %!latexindent
     else
         echo "Formatting of " . filetype  . " files is not currently supported."

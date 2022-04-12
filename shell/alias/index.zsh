@@ -4,8 +4,9 @@
 alias android_screen='nohup scrcpy --turn-screen-off 2>&1 >> /dev/null &'
 # 指定解压zip文件时，使用的文件编码，防止出现中文乱码
 alias unzip="unzip -O UTF-8"
-# 一个简单的 http 命令行服务器
-alias httpserver="python -m http.server 8080"
+# 防火墙配置命令
+alias firewall-cmd="sudo firewall-cmd"
+alias f-c-p="sudo firewall-cmd --permanent"
 
 # 编辑这个脚本
 alias edit_public_alias="nvim $0; source $0"

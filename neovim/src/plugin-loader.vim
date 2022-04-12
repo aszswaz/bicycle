@@ -19,8 +19,6 @@
 :Plug 'akinsho/toggleterm.nvim'
 " 编程语言辅助插件
 :Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" z shell 代码补全
-:Plug 'tjdevries/coc-zsh'
 " nvim-qt 的 gui 功能插件
 :Plug 'equalsraf/neovim-gui-shim'
 " 缩进层级展示插件
