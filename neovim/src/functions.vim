@@ -24,7 +24,7 @@ function FileFormat()
     if filetype == 'json'
         %!jq .
     elseif filetype == 'cpp'
-        %!astyle --style=attach --pad-oper --lineend=linux -N -C -L -xw -xW -w
+        %!astyle --style=java --indent=spaces=4 --pad-oper --lineend=linux -N -C --indent-labels -xw -xW -w
     elseif filetype == 'sh'
         %!shfmt -i 4
     elseif filetype == 'javascript'

@@ -87,9 +87,9 @@
 :nnoremap <C-v> "+p
 :tnoremap <C-v> <C-\><C-n>"+pa
 " 创建新的标签页
-:nnoremap <C-n><C-t> :tabnew<cr>
-:inoremap <C-n><C-t> <esc>:tabnew<cr>
-:tnoremap <C-n><C-t> <C-\><C-n>:tabnew<cr>
+" :nnoremap <C-n><C-t> :tabnew<cr>
+" :inoremap <C-n><C-t> <esc>:tabnew<cr>
+" :tnoremap <C-n><C-t> <C-\><C-n>:tabnew<cr>
 " 向左或向右切换标签页
 :nnoremap <A-Left> :BufferPrevious<cr>
 :inoremap <A-Left> <esc>:BufferPrevious<cr>
@@ -121,7 +121,10 @@
 :vnoremap <C-t><C-s> :TranslateW<cr>
 " 移动光标到第一个非空格字符
 :nnoremap <Home> ^
-:inoremap <Home> <esc>^a
+:inoremap <Home> <esc>^i
+" 全选
+:nnoremap <C-a> ggvG
+:inoremap <C-a> ggvGi
 
 " 写出文件之前，删除尾部空格
 :autocmd BufWritePre * :%s/\s\+$//e
