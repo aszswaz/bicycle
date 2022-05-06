@@ -19,6 +19,8 @@ alias mkdir="mkdir -v -p"
 alias rm="rm -r"
 # 列出文档仓库中所有的文本文件
 alias doc_ls="find ${DOCUMENT_HOME} ! -regex '.*/\.git/.*' ! -path '*/node_modules/*' ! -ipath '*/dist/*' ! -name '*.jpg' ! -name '*.zip' ! -name '*.svg' ! -name '*.png' -type f"
+# ffmpeg
+alias ffplay="ffplay -autoexit"
 
 # maven 编译项目时指定使用 jdk8
 alias mvn="JAVA_HOME=/usr/lib/jvm/java-8-openjdk/ mvn"

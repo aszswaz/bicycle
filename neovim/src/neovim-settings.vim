@@ -86,21 +86,22 @@
 " 从剪切板粘贴内容到VIM
 :nnoremap <C-v> "+p
 :tnoremap <C-v> <C-\><C-n>"+pa
+
 " 创建新的标签页
 " :nnoremap <C-n><C-t> :tabnew<cr>
 " :inoremap <C-n><C-t> <esc>:tabnew<cr>
-" :tnoremap <C-n><C-t> <C-\><C-n>:tabnew<cr>
 " 向左或向右切换标签页
 :nnoremap <A-Left> :BufferPrevious<cr>
 :inoremap <A-Left> <esc>:BufferPrevious<cr>
-:tnoremap <A-Left> <C-\><C-n>:BufferPrevious<cr>
 :nnoremap <A-Right> :BufferNext<cr>
 :inoremap <A-Right> <esc>:BufferNext<cr>
-:tnoremap <A-Right> <C-\><C-n>:BufferNext<cr>
 " Pin 标签页
 :nnoremap <C-t><C-p> :BufferPin<cr>
 :inoremap <C-t><C-p> <esc>:BufferPin<cr>
-:tnoremap <C-t><C-p> <C-\><C-n>:BufferPin<cr>
+" 关闭当前标签页
+:nnoremap <C-w> :BufferClose<cr>
+:inoremap <C-w> <esc>:BufferClose<cr>
+
 " 右移或右移当前标签页
 :nnoremap <C-A-Right> :BufferMoveNext<cr>
 :inoremap <C-A-Right> <esc>:BufferMoveNext<cr>
