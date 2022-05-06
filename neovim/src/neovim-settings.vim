@@ -56,76 +56,68 @@
 
 " 以下是快捷键配置，n开头代表普通模式下的快捷键，i开头是编辑模式下的快捷键，nore是不递归快捷键，map是快捷键映射
 " vim普通状态下的保存，<cr>表示回车，执行 :w 命令
-:nnoremap <C-s> :w<cr>
+:nnoremap <C-s>      :w<cr>
 " vim 编辑状态下的保存：<esc>退出编辑模式，:w 保存，<cr> 回车，a 回到编辑模式
-:inoremap <C-s> <esc>:w<cr>a
+:inoremap <C-s>      <esc>:w<cr>a
 " 一次性保存所有打开的文件，并关闭 VIM
-:nnoremap <C-q> :wa<cr>:qa!<cr>
-:inoremap <C-q> <esc>:wa<cr>:qa!<cr>
-" 保存并关闭当前缓冲区
-:nnoremap <C-s><C-s> :w<cr>:BufferClose<cr>
-:inoremap <C-s><C-s> <esc>:w<cr>:BufferClose<cr>
+:nnoremap <C-q>      :wa<cr>:qa!<cr>
+:inoremap <C-q>      <esc>:wa<cr>:qa!<cr>
 " 撤销
-:nnoremap <C-z> :u<cr>
-:inoremap <C-z> <esc>:u<cr>a
+:nnoremap <C-z>      :u<cr>
+:inoremap <C-z>      <esc>:u<cr>a
 " 重做
-:nnoremap <A-z> :redo<cr>
-:inoremap <A-z> <esc>:redo<cr>a
+:nnoremap <A-z>      :redo<cr>
+:inoremap <A-z>      <esc>:redo<cr>a
 " 普通模式删除行
-:nnoremap <C-y> dd<End>
+:nnoremap <C-y>      dd<End>
 " 编辑模式删除行，并吧光标移动到行尾
-:inoremap <C-y> <esc>ddA
+:inoremap <C-y>      <esc>ddA
 " 复制行，yy是复制，p是在新的一行粘贴
-:nnoremap <C-d> yyp<End>
-:inoremap <C-d> <esc>yypA
-:inoremap <C-v> <esc>"+pa
+:nnoremap <C-d>      yyp<End>
+:inoremap <C-d>      <esc>yypA
+:inoremap <C-v>      <esc>"+pa
 " 复制选中文本到系统剪切板
-:vnoremap <C-c> "+y
+:vnoremap <C-c>      "+y
 " 剪切选中文本到系统剪切板
-:vnoremap <C-x> "+d
+:vnoremap <C-x>      "+d
 " 从剪切板粘贴内容到VIM
-:nnoremap <C-v> "+p
-:tnoremap <C-v> <C-\><C-n>"+pa
+:nnoremap <C-v>      "+p
+:tnoremap <C-v>      <C-\><C-n>"+pa
 
 " 创建新的标签页
-" :nnoremap <C-n><C-t> :tabnew<cr>
-" :inoremap <C-n><C-t> <esc>:tabnew<cr>
+:nnoremap <A-t>      :tabnew<cr>
+:inoremap <A-t>      <esc>:tabnew<cr>
 " 向左或向右切换标签页
-:nnoremap <A-Left> :BufferPrevious<cr>
-:inoremap <A-Left> <esc>:BufferPrevious<cr>
-:nnoremap <A-Right> :BufferNext<cr>
-:inoremap <A-Right> <esc>:BufferNext<cr>
-" Pin 标签页
-:nnoremap <C-t><C-p> :BufferPin<cr>
-:inoremap <C-t><C-p> <esc>:BufferPin<cr>
-" 关闭当前标签页
-:nnoremap <C-w> :BufferClose<cr>
-:inoremap <C-w> <esc>:BufferClose<cr>
+:nnoremap <A-Left>   :tabNext<cr>
+:inoremap <A-Left>   <esc>:tabNext<cr>
+:nnoremap <A-Right>  :tabnext<cr>
+:inoremap <A-Right>  <esc>:tabnext<cr>
+" 保存文件、关闭缓冲区并关闭标签页
+:nnoremap <A-c>      :w<cr>:bd<cr>
+:inoremap <A-c>      <esc>:w<cr>:bd<cr>
+" 关闭其他标签页
+:nnoremap <A-o>      :tabonly<cr>
+:inoremap <A-o>      <esc>:tabonly<cr>
 
-" 右移或右移当前标签页
-:nnoremap <C-A-Right> :BufferMoveNext<cr>
-:inoremap <C-A-Right> <esc>:BufferMoveNext<cr>
-:nnoremap <C-A-Left> :BufferMovePrevious<cr>
-:inoremap <C-A-Left> :BufferMovePrevious<cr>
 " 上移一整行
-:nnoremap <C-Up> :m -2<cr>
-:inoremap <C-Up> <esc>:m -2<cr>A
+:nnoremap <C-Up>     :m -2<cr>
+:inoremap <C-Up>     <esc>:m -2<cr>A
 " 下移一整行
-:nnoremap <C-Down> :m +1<cr>
-:inoremap <C-Down> <esc>:m +1<cr>A
+:nnoremap <C-Down>   :m +1<cr>
+:inoremap <C-Down>   <esc>:m +1<cr>A
 " 根据文件类型格式化文件
-:nnoremap <C-f> :call FileFormat()<cr>
-:inoremap <C-f> <esc>:call FileFormat()<cr>
+:nnoremap <C-f>      :call FileFormat()<cr>
+:inoremap <C-f>      <esc>:call FileFormat()<cr>
 " 翻译单词
 :inoremap <C-t><C-s> <esc>:TranslateW<cr>A
 :nnoremap <C-t><C-s> <esc>:TranslateW<cr>
 :vnoremap <C-t><C-s> :TranslateW<cr>
 " 移动光标到第一个非空格字符
-:nnoremap <Home> ^
-:inoremap <Home> <esc>^i
+:nnoremap <Home>     ^
+:inoremap <Home>     <esc>^i
 " 全选
-:nnoremap <C-a> ggvG
-:inoremap <C-a> ggvGi
+:nnoremap <C-a>      ggvG
+:inoremap <C-a>      ggvGi
 
 " 写出文件之前，删除尾部空格
 :autocmd BufWritePre * :%s/\s\+$//e
