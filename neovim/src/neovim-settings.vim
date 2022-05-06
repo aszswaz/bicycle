@@ -105,6 +105,7 @@
 " 下移一整行
 :nnoremap <C-Down>   :m +1<cr>
 :inoremap <C-Down>   <esc>:m +1<cr>A
+
 " 根据文件类型格式化文件
 :nnoremap <C-f>      :call FileFormat()<cr>
 :inoremap <C-f>      <esc>:call FileFormat()<cr>
@@ -117,7 +118,7 @@
 :inoremap <Home>     <esc>^i
 " 全选
 :nnoremap <C-a>      ggvG
-:inoremap <C-a>      ggvGi
+:inoremap <C-a>      ggvG
 
 " 写出文件之前，删除尾部空格
 :autocmd BufWritePre * :%s/\s\+$//e
