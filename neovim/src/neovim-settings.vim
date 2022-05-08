@@ -90,8 +90,10 @@
 " 向左或向右切换标签页
 :nnoremap <A-Left>   :tabNext<cr>
 :inoremap <A-Left>   <esc>:tabNext<cr>
+:tnoremap <A-Left>   <C-\><C-n>:tabNext<cr>
 :nnoremap <A-Right>  :tabnext<cr>
 :inoremap <A-Right>  <esc>:tabnext<cr>
+:tnoremap <A-Right>  <C-\><C-n>:tabnext<cr>
 " 保存文件、关闭缓冲区并关闭标签页
 :nnoremap <A-c>      :w<cr>:bd<cr>
 :inoremap <A-c>      <esc>:w<cr>:bd<cr>
@@ -119,6 +121,8 @@
 " 全选
 :nnoremap <C-a>      ggvG
 :inoremap <C-a>      ggvG
+" 退出终端模式
+:tnoremap <esc>      <C-\><C-n>
 
 " 写出文件之前，删除尾部空格
 :autocmd BufWritePre * :%s/\s\+$//e
