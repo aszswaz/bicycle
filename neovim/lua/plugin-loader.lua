@@ -17,7 +17,7 @@ require("indent_blankline").setup({
 
 -- 终端插件，仓库：https://github.com/akinsho/toggleterm.nvim
 require("toggleterm").setup({
-    open_mapping = [[<C-t>]],
+    open_mapping = [[<C-t><C-e>]],
     hide_numbers = true,
     shade_terminals = true,
     -- 终端的深色程度
