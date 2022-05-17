@@ -90,6 +90,7 @@
 " 创建新的标签页
 :nnoremap <A-t>      :tabnew<cr>
 :inoremap <A-t>      <esc>:tabnew<cr>
+:tnoremap <A-t>      <C-\><C-n>:tabnew<cr>
 " 向左或向右切换标签页
 :nnoremap <A-Left>   :tabNext<cr>
 :inoremap <A-Left>   <esc>:tabNext<cr>
@@ -103,6 +104,7 @@
 " 关闭其他标签页
 :nnoremap <A-o>      :tabonly<cr>
 :inoremap <A-o>      <esc>:tabonly<cr>
+:tnoremap <A-o>      <C-\><C-n>:tabonly<cr>
 
 " 上移一整行
 :nnoremap <C-Up>     :m -2<cr>
