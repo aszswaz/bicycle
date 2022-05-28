@@ -87,24 +87,10 @@
 :nnoremap <C-v>      "+p
 :tnoremap <C-v>      <C-\><C-n>"+pa
 
-" 创建新的标签页
-:nnoremap <A-t>      :tabnew<cr>
-:inoremap <A-t>      <esc>:tabnew<cr>
-:tnoremap <A-t>      <C-\><C-n>:tabnew<cr>
-" 向左或向右切换标签页
-:nnoremap <A-Left>   :tabNext<cr>
-:inoremap <A-Left>   <esc>:tabNext<cr>
-:tnoremap <A-Left>   <C-\><C-n>:tabNext<cr>
-:nnoremap <A-Right>  :tabnext<cr>
-:inoremap <A-Right>  <esc>:tabnext<cr>
-:tnoremap <A-Right>  <C-\><C-n>:tabnext<cr>
-" 保存文件、关闭缓冲区并关闭标签页
-:nnoremap <A-c>      :w<cr>:bd<cr>
-:inoremap <A-c>      <esc>:w<cr>:bd<cr>
-" 关闭其他标签页
-:nnoremap <A-o>      :tabonly<cr>
-:inoremap <A-o>      <esc>:tabonly<cr>
-:tnoremap <A-o>      <C-\><C-n>:tabonly<cr>
+" 创建新的标签页，<silent> 表示沉默的，不在命令行显示执行的命令
+:nnoremap <silent> <A-t>      :tabnew<cr>
+:inoremap <silent> <A-t>      <esc>:tabnew<cr>
+:tnoremap <silent> <A-t>      <C-\><C-n>:tabnew<cr>
 
 " 上移一整行
 :nnoremap <C-Up>     :m -2<cr>

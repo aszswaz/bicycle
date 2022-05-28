@@ -24,11 +24,13 @@
 " 缩进层级展示插件
 :Plug 'lukas-reineke/indent-blankline.nvim'
 " 标签页插件
-" :Plug 'kyazdani42/nvim-web-devicons'
-" :Plug 'romgrk/barbar.nvim'
+:Plug 'kyazdani42/nvim-web-devicons'
+:Plug 'romgrk/barbar.nvim'
 " vim 状态栏插件，下面有些配套插件
 :Plug 'itchyny/lightline.vim'
 :Plug 'itchyny/vim-gitbranch'
+" 书签
+:Plug 'MattesGroeger/vim-bookmarks'
 
 " vim 主题插件
 :Plug 'dracula/vim'
