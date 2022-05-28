@@ -74,3 +74,5 @@ echo "${zshrc}" >~/.zshrc
 ./emacs/init.sh
 # 初始化 Python env 环境
 ./python/install.sh
+# 使用 gdb 的初始化设置
+ln -s "$PWD/gdbinit" "$HOME/.gdbinit"
