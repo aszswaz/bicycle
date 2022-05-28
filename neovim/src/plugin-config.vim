@@ -26,7 +26,7 @@
 " vim-bookmarks 插件配置
 highlight BookmarkSign ctermbg=NONE ctermfg=160
 highlight BookmarkLine ctermbg=194 ctermfg=NONE
-let g:bookmark_sign = '♥''
+let g:bookmark_sign = '⚑'
 let g:bookmark_highlight_lines = 1
 
 " barbar.nvim 配置
