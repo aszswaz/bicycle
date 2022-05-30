@@ -53,9 +53,10 @@
 :set showtabline=2
 " 启用真彩色
 :set termguicolors
-" gdb debug 设置，让 GDB 窗口出现在右侧
-:let g:termdebug_popup = 0
-:let g:termdebug_wide = 163
+" gdb debug 设置
+" 关闭源码悬浮窗
+" :let g:termdebug_popup = 0
+" :let g:termdebug_wide = 163
 
 " 以下是快捷键配置，n开头代表普通模式下的快捷键，i开头是编辑模式下的快捷键，nore是不递归快捷键，map是快捷键映射
 " vim普通状态下的保存，<cr>表示回车，执行 :w 命令
@@ -75,17 +76,17 @@
 :nnoremap <C-y>      dd<End>
 " 编辑模式删除行，并吧光标移动到行尾
 :inoremap <C-y>      <esc>ddA
+" 粘贴
+:nnoremap <C-p>      <esc>"+pa
+:inoremap <C-p>      <esc>"+pa
+:tnoremap <C-p>      <C-\><C-n>"+pa
 " 复制行，yy是复制，p是在新的一行粘贴
 :nnoremap <C-d>      yyp<End>
 :inoremap <C-d>      <esc>yypA
-:inoremap <C-v>      <esc>"+pa
 " 复制选中文本到系统剪切板
 :vnoremap <C-c>      "+y
 " 剪切选中文本到系统剪切板
 :vnoremap <C-x>      "+d
-" 从剪切板粘贴内容到VIM
-:nnoremap <C-v>      "+p
-:tnoremap <C-v>      <C-\><C-n>"+pa
 
 " 创建新的标签页，<silent> 表示沉默的，不在命令行显示执行的命令
 :nnoremap <silent> <A-t>      :tabnew<cr>

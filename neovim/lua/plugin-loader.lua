@@ -11,6 +11,7 @@ require("nvim-tree").setup({
     },
 })
 
+-- 文本缩进层级显示设置
 require("indent_blankline").setup({
     show_end_of_line = true,
 })

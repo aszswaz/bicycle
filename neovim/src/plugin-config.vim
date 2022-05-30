@@ -21,7 +21,7 @@
     \ }
 
 " dashboard-nvim 插件配置
-:let g:dashboard_default_executive ='fzf'
+:let g:dashboard_default_executive = 'fzf'
 
 " vim-bookmarks 插件配置
 highlight BookmarkSign ctermbg=NONE ctermfg=160
