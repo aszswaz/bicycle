@@ -55,8 +55,8 @@
 :set termguicolors
 " gdb debug 设置
 " 关闭源码悬浮窗
-" :let g:termdebug_popup = 0
-" :let g:termdebug_wide = 163
+:let g:termdebug_popup = 0
+:let g:termdebug_wide = 163
 
 " 以下是快捷键配置，n开头代表普通模式下的快捷键，i开头是编辑模式下的快捷键，nore是不递归快捷键，map是快捷键映射
 " vim普通状态下的保存，<cr>表示回车，执行 :w 命令
