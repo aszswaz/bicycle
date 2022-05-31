@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+source ./lib/index.sh
+
 # 将手机屏幕投影到电脑，需要安装 adb 和 scrcpy
 alias android_screen='nohup scrcpy --turn-screen-off 2>&1 >> /dev/null &'
 # 指定解压zip文件时，使用的文件编码，防止出现中文乱码
@@ -44,3 +46,5 @@ alias source_node_bin="test -d ./node_modules/.bin && NODE_BIN='$(pwd)/node_modu
 # mongodb 的链接信息都存储在 ~/.mongorc.js 中所以这里就不需要在参数中进行指定
 alias mongo="mongo --nodb"
 alias mongosh="mongosh --nodb"
+# chromium 浏览器代理设置
+alias chromium='chromium_set_proxy'
