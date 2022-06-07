@@ -53,6 +53,3 @@
 " 置项标签页
 :nnoremap <silent> <A-p>      :BufferPin<cr>
 :inoremap <silent> <A-p>      <esc>:BufferPin<cr>
-" 终端
-:nnoremap <silent> <C-t>      :ToggleTerm<cr>
-:inoremap <silent> <C-t>      <esc>:ToggleTerm<cr>
