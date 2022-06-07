@@ -24,10 +24,10 @@
 :let g:dashboard_default_executive = 'fzf'
 
 " vim-bookmarks 插件配置
-highlight BookmarkSign ctermbg=NONE ctermfg=160
-highlight BookmarkLine ctermbg=194 ctermfg=NONE
-let g:bookmark_sign = '⚑'
-let g:bookmark_highlight_lines = 1
+:highlight BookmarkSign ctermbg=NONE ctermfg=160
+:highlight BookmarkLine ctermbg=194 ctermfg=NONE
+:let g:bookmark_sign = '⚑'
+:let g:bookmark_highlight_lines = 1
 
 " barbar.nvim 配置
 " 向左或向右切换标签页
@@ -53,3 +53,6 @@ let g:bookmark_highlight_lines = 1
 " 置项标签页
 :nnoremap <silent> <A-p>      :BufferPin<cr>
 :inoremap <silent> <A-p>      <esc>:BufferPin<cr>
+" 终端
+:nnoremap <silent> <C-t>      :ToggleTerm<cr>
+:inoremap <silent> <C-t>      <esc>:ToggleTerm<cr>
