@@ -4,7 +4,7 @@
 function Gitbranchicon()
     let branchname=gitbranch#name()
     if empty(branchname)
-        return ''
+        return ""
     else
         return " " . branchname
     endif
@@ -20,14 +20,17 @@ function FileFormat()
     " 获取光标所在行
     let cursorLine = line(".")
     let filetype = &filetype
+
     " 根据当前缓冲区的文件类型，格式化文件
     if filetype == 'json'
         %!jq .
-    elseif filetype == 'cpp'
-        %!astyle --style=java --indent=spaces=4 --pad-oper --lineend=linux -N -C --indent-labels -xw -xW -w
-    elseif filetype == 'sh'
+    elseif filetype == 'cpp' || filetype == "c"
+        %!astyle --style=java --indent=spaces=4 --pad-oper -N -C --indent-labels -xw -xW -w --mode=c
+    elseif filetype == "java"
+        %!astyle --style=java --indent=spaces=4 --mode=java
+    elseif filetype == 'sh' || filetype == "zsh"
         %!shfmt -i 4
-    elseif filetype == 'javascript'
+    elseif filetype == 'javascript' || filetype == "js"
         %!js-beautify
     elseif filetype == 'python'
         %!autopep8 --max-line-length 10000 -
@@ -35,10 +38,13 @@ function FileFormat()
         %!stylua - --indent-type Spaces --indent-width 4
     elseif filetype == 'tex' || filetype == "plaintex"
         %!latexindent
+    elseif filetype == "xml"
+        %!xmllint --format -
     else
         echo "Formatting of " . filetype  . " files is not currently supported."
         return
     endif
+
     " 控制光标回到原位
     execute cursorLine
 endfunction
