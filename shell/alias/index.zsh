@@ -46,5 +46,3 @@ alias source_node_bin="test -d ./node_modules/.bin && NODE_BIN='$(pwd)/node_modu
 # mongodb 的链接信息都存储在 ~/.mongorc.js 中所以这里就不需要在参数中进行指定
 alias mongo="mongo --nodb"
 alias mongosh="mongosh --nodb"
-# chromium 浏览器代理设置
-alias chromium='chromium_set_proxy'
