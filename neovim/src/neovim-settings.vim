@@ -88,11 +88,6 @@
 " 剪切选中文本到系统剪切板
 :vnoremap          <C-x>      "+d
 
-" 创建新的标签页，<silent> 表示沉默的，不在命令行显示执行的命令
-:nnoremap <silent> <A-t>      :tabnew<cr>
-:inoremap <silent> <A-t>      <esc>:tabnew<cr>
-:tnoremap <silent> <A-t>      <C-\><C-n>:tabnew<cr>
-
 " 上移一整行
 :nnoremap <silent> <C-Up>     :m -2<cr>
 :inoremap <silent> <C-Up>     <esc>:m -2<cr>A
