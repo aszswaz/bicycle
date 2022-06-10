@@ -7,7 +7,6 @@ require("nvim-tree").setup({
         enable = true,
         ignore = false,
         timeout = 500,
-        -- 所有行的缩进层级展现插件
     },
 })
 
