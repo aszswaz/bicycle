@@ -30,7 +30,7 @@ function FileFormat()
         %!astyle --style=java --indent=spaces=4 --mode=java
     elseif filetype == 'sh' || filetype == "zsh"
         %!shfmt -i 4
-    elseif filetype == 'javascript' || filetype == "js"
+    elseif filetype == 'javascript' || filetype == "js" || filetype == "typescript"
         %!js-beautify
     elseif filetype == 'python'
         %!autopep8 --max-line-length 10000 -
