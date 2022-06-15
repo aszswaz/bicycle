@@ -48,8 +48,8 @@
 :nnoremap <silent> <A-8>      :BufferGoto 8<CR>
 :nnoremap <silent> <A-9>      :BufferLast<CR>
 " 保存文件、关闭缓冲区并关闭标签页
-:nnoremap <silent> <A-c>      :w<cr>:BufferClose<cr>
-:inoremap <silent> <A-c>      <esc>:w<cr>:BufferClose<cr>
+:nnoremap <silent> <A-c>      :call CloseTab()<cr>
+:inoremap <silent> <A-c>      <esc>:call CloseTab()<cr>
 " 置项标签页
 :nnoremap <silent> <A-p>      :BufferPin<cr>
 :inoremap <silent> <A-p>      <esc>:BufferPin<cr>
