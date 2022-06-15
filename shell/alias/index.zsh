@@ -25,7 +25,8 @@ alias doc_ls="find ${DOCUMENT_HOME} ! -regex '.*/\.git/.*' ! -path '*/node_modul
 alias ffplay="ffplay -autoexit"
 
 # maven 编译项目时指定使用 jdk8
-alias mvn="JAVA_HOME=/usr/lib/jvm/java-8-openjdk/ mvn"
+alias mvn8="JAVA_HOME=/usr/lib/jvm/java-8-openjdk mvn"
+alias mvn11="JAVA_HOME=/usr/lib/jvm/java-11-openjdk mvn"
 
 # cmake 项目编译
 alias cmake_build="cmake -S ./ -B ./builder && cmake --build ./builder"

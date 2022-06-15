@@ -6,8 +6,6 @@
 :Plug 'kyazdani42/nvim-tree.lua'
 " 文件管理器中的文件图标
 :Plug 'kyazdani42/nvim-web-devicons'
-" neovim 启动时的欢迎界面
-:Plug 'glepnir/dashboard-nvim'
 " 搜索文件插件，可以搭配 deshboard-nvim 使用
 :Plug 'junegunn/fzf'
 :Plug 'junegunn/fzf.vim'
@@ -40,5 +38,8 @@
 
 :call plug#end()
 
-"运行 lua/plugin-loader.lua 脚本，加载那些使用 lua 编写的插件
+" packer 和 vim-plug 一样，也是一个 neovim 的插件管理器
+:lua require("packer-config")
+
+" 运行 lua/plugin-loader.lua 脚本，加载那些使用 lua 编写的插件
 :lua require("plugin-loader")

@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-ln -s "$PWD/emacs.el" "$HOME/.emacs"
+[[ ! -e "$HOME/.emacs" ]] && ln -s "$PWD/emacs.el" "$HOME/.emacs"

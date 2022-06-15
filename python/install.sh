@@ -2,11 +2,9 @@
 
 cd $(dirname $0)
 
-source ./venv/bin/activate
 pip install -r requirements.txt
-pip freeze >>requirements.txt
 
-set -x
+# 将可执行的 python 文件链接到 ../bin 目录
 for file in $(find ! -path '*/venv/*' -name '*.py'); do
     if [ -x $file ] && [ ! -e "../bin/$(basename $file)" ]; then
         ln -s "$(realpath $file)" "../bin/$(basename $file)"

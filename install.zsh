@@ -32,20 +32,11 @@ if [[ $SHELL != "/usr/bin/zsh" ]]; then
     echo "Warning: It is recommended to use zsh as the shell interpreter to execute scripts in the repository." >&2
 fi
 
-# 应用 neovim 的配置
-NEOVIM_CONFIG="${HOME}/.config/nvim"
-if [[ ! -e ${NEOVIM_CONFIG} ]]; then
-    # 建立软链接
-    ln -s "$(pwd)/neovim" "${NEOVIM_CONFIG}"
-fi
-
-# 把 Linux 手册安装到系统
-sudo ./man/init.sh
 
 # 检查系统中是否存在执行脚本，所需的软件
 COMMANDS=(curl jq git python realpath cmake gcc makepkg)
 for item in $COMMANDS; do
-    if ! command -v $item >>/dev/null; then
+    if ! command -v $item >>/dev/null 2>&1; then
         print_error "Please install ${item}."
         exit 1
     fi
@@ -68,6 +59,8 @@ script="[[ \$PATH == *${PWD}/bin* ]] || export PATH=\"\${PATH}:${PWD}/bin\""
 [[ "$zshrc" == *$script* ]] || zshrc="${zshrc}\n${script}"
 echo "${zshrc}" >~/.zshrc
 
+# 把 Linux 手册安装到系统
+sudo ./man/init.sh
 # 编译 CPP 程序
 ./cpp/init.zsh
 # 应用 emacs 的配置文件
@@ -75,4 +68,6 @@ echo "${zshrc}" >~/.zshrc
 # 初始化 Python env 环境
 ./python/install.sh
 # 使用 gdb 的初始化设置
-ln -s "$PWD/gdbinit" "$HOME/.gdbinit"
+[[ ! -e "$HOME/.gdbinit" ]] && ln -s "$PWD/gdbinit" "$HOME/.gdbinit"
+# 初始化 neovim
+./neovim/init.sh
