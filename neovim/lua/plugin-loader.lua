@@ -14,7 +14,7 @@ require("nvim-tree").setup({
 require("indent_blankline").setup({
     show_end_of_line = true,
     -- 有一些页面展示缩进层级会扰乱页面展示效果，比如用于展示起动页面的 dashboard，因此需要排除这些页面
-    filetype_exclude = { "dashboard" },
+    filetype_exclude = { "dashboard", "help" },
 })
 
 -- 终端插件，仓库：https://github.com/akinsho/toggleterm.nvim
