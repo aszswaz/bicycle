@@ -29,6 +29,8 @@
 :Plug 'itchyny/vim-gitbranch'
 " 书签
 :Plug 'MattesGroeger/vim-bookmarks'
+" vim 欢迎页插件
+:Plug 'mhinz/vim-startify'
 
 " vim 主题插件
 :Plug 'dracula/vim'
