@@ -6,11 +6,6 @@
 :Plug 'kyazdani42/nvim-tree.lua'
 " 文件管理器中的文件图标
 :Plug 'kyazdani42/nvim-web-devicons'
-" 搜索文件插件，可以搭配 deshboard-nvim 使用
-:Plug 'junegunn/fzf'
-:Plug 'junegunn/fzf.vim'
-" 高亮光标所在处的单词在全文的所有位置
-:Plug 'lfv89/vim-interestingwords'
 " 翻译插件
 :Plug 'voldikss/vim-translator'
 " 终端插件
@@ -21,9 +16,6 @@
 :Plug 'equalsraf/neovim-gui-shim'
 " 缩进层级展示插件
 :Plug 'lukas-reineke/indent-blankline.nvim'
-" 标签页插件
-:Plug 'kyazdani42/nvim-web-devicons'
-:Plug 'romgrk/barbar.nvim'
 " vim 状态栏插件，下面有些配套插件
 :Plug 'itchyny/lightline.vim'
 :Plug 'itchyny/vim-gitbranch'

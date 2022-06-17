@@ -6,4 +6,9 @@ vim.cmd [[packadd packer.nvim]]
 return require("packer").startup(function()
     -- 让 packer 自己管理自己
     use "wbthomason/packer.nvim"
+    -- 标签页插件
+    use {
+        "romgrk/barbar.nvim",
+        requires = { "kyazdani42/nvim-web-devicons" },
+    }
 end)
