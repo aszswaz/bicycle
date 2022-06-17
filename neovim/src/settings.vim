@@ -2,8 +2,9 @@
 " 开启语法高亮
 :syntax on
 
-" 设置制表符的宽度为4个空格
-:set tabstop=4
+" 根据文件类型，设置制表符的宽度
+:autocmd FileType *             set tabstop=4
+:autocmd FileType json,html,xml set tabstop=2
 " 缩进应该跨越的宽度，0表示复制 tabstop 的值，-1 表示复制 shiftwidth 的值
 :set softtabstop=0
 " shiftwidth 给出用于移位命令的宽度，例如 << , >>和 == .特殊值 0 表示复制 'tabstop' 的值。
