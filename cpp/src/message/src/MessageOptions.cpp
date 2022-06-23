@@ -46,6 +46,15 @@ namespace bicycle {
         return argv[i];
     }
 
+    void printHelp() {
+        cerr << "--mtype 消息类型：none、debug、info、warn、error" << endl;
+        cerr << "--title 弹窗标题" << endl;
+        cerr << "--content 正文" << endl;
+        cerr << "--time 弹窗显示时间" << endl;
+        cerr << "--help 显式帮助信息" << endl;
+        exit(1);
+    }
+
     /**
      * 将传入参数解析为结构体
      */
@@ -64,6 +73,8 @@ namespace bicycle {
                     options->setContent(getOptValue(argv, argc, i++));
                 } else if (!strcmp(option, "time")) {
                     options->setTime(stoi(getOptValue(argv, argc, i++)));
+                } else if (!strcmp(option, "help")) {
+                    printHelp();
                 } else {
                     string message = "Unknown option: ";
                     option -= 2;
