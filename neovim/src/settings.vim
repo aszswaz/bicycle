@@ -60,6 +60,8 @@
 :let g:termdebug_wide=163
 " 设置光标闪烁
 :set guicursor+=a:blinkon1
+" 启用系统剪切板
+:set clipboard+=unnamedplus
 
 " 写出文件之前，删除尾部空格
 :autocmd BufWritePre * :%s/\s\+$//e
