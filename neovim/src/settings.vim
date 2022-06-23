@@ -3,7 +3,7 @@
 :syntax on
 
 " 根据文件类型，设置制表符的宽度
-:autocmd FileType *             set tabstop=4
+:set tabstop=4
 :autocmd FileType json,html,xml set tabstop=2
 " 缩进应该跨越的宽度，0表示复制 tabstop 的值，-1 表示复制 shiftwidth 的值
 :set softtabstop=0
@@ -60,8 +60,6 @@
 :let g:termdebug_wide=163
 " 设置光标闪烁
 :set guicursor+=a:blinkon1
-" 启用系统剪切板
-:set clipboard+=unnamedplus
 
 " 写出文件之前，删除尾部空格
 :autocmd BufWritePre * :%s/\s\+$//e

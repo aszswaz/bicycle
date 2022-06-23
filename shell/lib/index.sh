@@ -14,27 +14,34 @@ function log_error() {
 # 添加 PATH 变量，主要是避免重复的添加，导致对 PATH 产生了污染，参考 /etc/profile
 function append_path() {
     case ":$PATH:" in
-        *:"$1":*)
-            ;;
-        *)
-            PATH="${PATH:+$PATH:}$1"
+    *:"$1":*) ;;
+
+    *)
+        PATH="${PATH:+$PATH:}$1"
+        ;;
     esac
 }
 
 # 使用 pacman 安装软件包
 function pacman_install() {
     if command -v "pacman" >>/dev/null 2>&1; then
-        local local_packages=($(pacman -Qq))
         local need_install=()
         local args=($@)
+        local local_packages=($(pacman -Qq))
 
         for item in $args; do
-            if [[ ! $local_packages =~ $item ]]; then
-                need_install[$(( ${#need_install[@]} + 1 ))]=$item
-            fi
+            local is_install=1
+            for item02 in $local_packages; do
+                if [[ $item == $item02 ]]; then
+                    is_install=0
+                    break
+                fi
+            done
+            [[ $is_install == 1 ]] && need_install[$((${#need_install[@]} + 1))]=$item
         done
 
         [[ $need_install != "" ]] && {sudo pacman -Sy --noconfirm $need_install || return 1}
+        unset item item02
         return 0
     else
         log_error "pacman not found"
@@ -51,12 +58,18 @@ function yay_install() {
     local args=($@)
 
     for item in $args; do
-        if [[ ! $local_packages =~ $item ]]; then
-            need_install[$(( ${#need_install[@]} + 1 ))]=$item
-        fi
+        local is_install=1
+        for item02 in $local_packages; do
+            if [[ $item == $item02 ]]; then
+                is_install=0
+                break
+            fi
+        done
+        [[ $is_install == 1 ]] && need_install[$((${#need_install[@]} + 1))]=$item
     done
 
     [[ $need_install != "" ]] && yay -Sy --noconfirm $need_install
+    unset item item02
     return 0
 }
 

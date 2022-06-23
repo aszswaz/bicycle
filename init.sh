@@ -48,7 +48,7 @@ fi
 # 把 Linux 手册安装到系统
 ./man/init.sh
 # 编译 CPP 程序
-./cpp/init.zsh
+./cpp/init.sh
 # 应用 emacs 的配置文件
 ./emacs/init.sh
 # 初始化 Python env 环境
