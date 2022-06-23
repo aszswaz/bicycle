@@ -1,1 +1,1 @@
-/home/aszswaz/document/bicycle/python/DieZeit.py
+/home/aszswaz/Documents/bicycle/python/DieZeit.py
