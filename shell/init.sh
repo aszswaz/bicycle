@@ -24,9 +24,4 @@ else
     ln -s "$PWD/zshrc" "$HOME/.zshrc"
 fi
 
-# 下载配置文件
-if [[ ! -d "$HOME/.config/bicycle-config" ]]; then
-    git clone 'ssh://git@gitea.aszswaz.cn:3001/aszswaz/bicycle-config.git' "$HOME/.config/bicycle-config"
-fi
-
 log_info "init shell success"

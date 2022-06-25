@@ -17,6 +17,8 @@ cd "$bicycle_path"
 cd "shell"
 source "lib/index.sh"
 source "alias/index.sh"
+source "$bicycle_path/bicycle-config/profile.sh"
+source "$bicycle_path/bicycle-config/alias.sh"
 
 append_path "$bicycle_path/bin"
 
@@ -24,10 +26,6 @@ append_path "$bicycle_path/bin"
 eval "$(dircolors dir_colors)"
 [[ ! -e "${HOME}/.dir_colors" ]] && ln -s "$PWD/dir_colors" "${HOME}/.dir_colors"
 
-# 加载配置
-if [[ -e "$HOME/.config/bicycle-config/init.sh" ]]; then
-    source "$HOME/.config/bicycle-config/init.sh"
-fi
 
 shell_lib_desyory
 [[ $PWD != $WORK_DIR ]] && cd "$WORK_DIR"

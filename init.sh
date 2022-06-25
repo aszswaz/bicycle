@@ -44,7 +44,7 @@ fi
 [[ ! -e "$HOME/.gdbinit" ]] && ln -s "$PWD/gdbinit" "$HOME/.gdbinit"
 
 # 获取子模块
-[[ ! -e "bicycle-config" ]] && git
+git submodule init
 
 # 任何一步执行失败，立刻退出脚本，避免忽略或累积错误
 ./shell/init.sh
@@ -58,5 +58,7 @@ fi
 ./python/init.sh
 # 初始化 neovim
 ./neovim/init.sh
+# 初始化个人私有配置
+./bicycle-config/init.sh
 
 cd "$WORK_DIR"
