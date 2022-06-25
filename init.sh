@@ -43,6 +43,9 @@ fi
 # 使用 gdb 的初始化设置
 [[ ! -e "$HOME/.gdbinit" ]] && ln -s "$PWD/gdbinit" "$HOME/.gdbinit"
 
+# 获取子模块
+[[ ! -e "bicycle-config" ]] && git
+
 # 任何一步执行失败，立刻退出脚本，避免忽略或累积错误
 ./shell/init.sh
 # 把 Linux 手册安装到系统
