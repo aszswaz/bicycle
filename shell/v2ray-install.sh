@@ -2,7 +2,7 @@
 
 # 这个脚本用于对 v2ray，进行一些常规的初始化操作，比如安装 neovim
 
-alias curl="curl -L -fsSL"
+alias curl="curl -L"
 
 if ! command -v yum >>/dev/null; then
     echo -e "\033[92myum not found\033[0m"
@@ -20,7 +20,7 @@ if ! command -v zsh >>/dev/null; then
 fi
 # 安装 oh-my-zsh
 if [[ ! -e $HOME/.oh-my-zsh ]]; then
-    sh -c "$(curl https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 # 安装 neovim
