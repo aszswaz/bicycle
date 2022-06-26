@@ -18,6 +18,10 @@ fi
 if ! command -v zsh >>/dev/null; then
     sudo yum install -y zsh
 fi
+# 安装 util-linux-user，其中的 chsh 可用于修改用户登录 shell
+if ! command -v chsh >>/dev/null; then
+    sudo yum install util-linux-user
+fi
 # 安装 oh-my-zsh
 if [[ ! -e $HOME/.oh-my-zsh ]]; then
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
