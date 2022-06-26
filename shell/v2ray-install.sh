@@ -40,12 +40,11 @@ fi
 
 # 安装 v2ray
 if ! command -v v2ray >>/dev/null; then
-    curl https://github.com/v2fly/v2ray-core/releases/download/v4.45.2/v2ray-linux-64.zip
+    curl https://github.com/v2fly/v2ray-core/releases/download/v4.45.2/v2ray-linux-64.zip --output v2ray-linux64.zip
     unzip v2ray-linux-64.zip -d /usr/local/share/v2ray
     sudo ln -s /usr/local/share/v2ray/v2ray /usr/local/bin/v2ray
     sudo nvim /usr/local/share/v2ray/systemd/system/v2ray.service
     sudo ln -s /usr/local/share/v2ray/systemd/system/v2ray.service  /usr/lib/systemd/system/v2ray.service
     sudo systemctl daemon-reload
     sudo systemctl enable v2ray
-    rm v2ray-linux64.tar.gz
 fi
