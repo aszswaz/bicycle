@@ -29,6 +29,7 @@ if ! command -v nvim >>/dev/null; then
     tar zxvf nvim-linux64.tar.gz
     sudo mv nvim-linux64 /usr/local/share/nvim-linux64
     sudo ln -s /usr/local/share/nvim-linux64/bin/nvim /usr/local/bin/nvim
+    sudo ln -s /usr/local/share/nvim-linux64/bin/nvim /bin/nvim
     command -v vi >>/dev/null && rm $(command -v vi)
     sudo ln -s /usr/local/share/nvim-linux64/bin/nvim /usr/local/bin/vi
 fi
@@ -47,4 +48,5 @@ if ! command -v v2ray >>/dev/null; then
     sudo ln -s /usr/local/share/v2ray/systemd/system/v2ray.service  /usr/lib/systemd/system/v2ray.service
     sudo systemctl daemon-reload
     sudo systemctl enable v2ray
+    rm v2ray-linux-64.zip
 fi
