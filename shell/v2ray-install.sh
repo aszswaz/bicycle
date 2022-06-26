@@ -47,4 +47,5 @@ if ! command -v v2ray >>/dev/null; then
     sudo ln -s /usr/local/share/v2ray/systemd/system/v2ray.service  /usr/lib/systemd/system/v2ray.service
     sudo systemctl daemon-reload
     sudo systemctl enable v2ray
+    rm v2ray-linux64.tar.gz
 fi
