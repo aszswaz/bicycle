@@ -39,12 +39,21 @@ if ! command -v unzip >>/dev/null; then
     sudo yum install -y unzip
 fi
 
+# 安装 firewall
+if ! command -v firewall-cmd >>/dev/null; then
+    sudo yum install firewalld
+    # 开放 v2ray 端口
+    sudo firewall-cmd --zone=public --add-port=10087/tcp --add-port=10087/udp --permanent
+    sudo firewall-cmd --reload
+fi
+
 # 安装 v2ray
 if ! command -v v2ray >>/dev/null; then
     [[ ! -e v2ray-linux-64.zip ]] && curl https://github.com/v2fly/v2ray-core/releases/download/v4.45.2/v2ray-linux-64.zip --output v2ray-linux-64.zip
     sudo unzip v2ray-linux-64.zip -d /usr/local/share/v2ray
     sudo ln -s /usr/local/share/v2ray/v2ray /usr/local/bin/v2ray
     sudo nvim /usr/local/share/v2ray/systemd/system/v2ray.service
+    sudo mkdir /etc/v2ray
     sudo mkdir /var/log/v2ray && sudo chmod a+rw /var/log/v2ray
     sudo ln -s /usr/local/share/v2ray/systemd/system/v2ray.service  /usr/lib/systemd/system/v2ray.service
     sudo systemctl daemon-reload
