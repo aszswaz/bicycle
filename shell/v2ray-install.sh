@@ -45,6 +45,7 @@ if ! command -v v2ray >>/dev/null; then
     sudo unzip v2ray-linux-64.zip -d /usr/local/share/v2ray
     sudo ln -s /usr/local/share/v2ray/v2ray /usr/local/bin/v2ray
     sudo nvim /usr/local/share/v2ray/systemd/system/v2ray.service
+    sudo mkdir /var/log/v2ray && sudo chmod a+rw /var/log/v2ray
     sudo ln -s /usr/local/share/v2ray/systemd/system/v2ray.service  /usr/lib/systemd/system/v2ray.service
     sudo systemctl daemon-reload
     sudo systemctl enable v2ray
