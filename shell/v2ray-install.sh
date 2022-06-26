@@ -34,7 +34,7 @@ if ! command -v nvim >>/dev/null; then
     sudo mv nvim-linux64 /usr/local/share/nvim-linux64
     sudo ln -s /usr/local/share/nvim-linux64/bin/nvim /usr/local/bin/nvim
     sudo ln -s /usr/local/share/nvim-linux64/bin/nvim /bin/nvim
-    command -v vi >>/dev/null && rm $(command -v vi)
+    command -v vi >>/dev/null && sudo rm $(command -v vi)
     sudo ln -s /usr/local/share/nvim-linux64/bin/nvim /usr/local/bin/vi
 fi
 
