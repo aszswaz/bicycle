@@ -20,7 +20,7 @@ WORKING_DIR=$(pwd)
 declare -A OPTIONS
 
 # 加载外部脚本
-source "${BICYCLE_CONFIG}/aszswaz.zsh"
+source "${BICYCLE_CONFIG}/aszswaz.sh"
 
 # git push 指令可能出现网络超时的情况，通过 timeout 限制此类操作的超时时间
 alias err_exit="exit 1"

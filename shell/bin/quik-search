@@ -3,7 +3,7 @@
 # 从快搜数据接口查询数据
 # author: aszswaz
 
-source "${HOME}/.config/bicycle-config/zhiwedata.zsh"
+source "$BICYCLE_CONFIG/zhiwedata.zsh"
 
 cd $(dirname $0)
 alias curl="curl --disable -s"
