@@ -21,7 +21,7 @@ if [[ -e "$HOME/.zshrc" ]]; then
         ln -s "$PWD/zshrc" "$HOME/.zshrc"
     fi
 else
-    ln -s "$PWD/zshrc" "$HOME/.zshrc"
+    ln -s "$PWD/zshrc.sh" "$HOME/.zshrc"
 fi
 
 log_info "init shell success"

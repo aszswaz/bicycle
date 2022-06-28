@@ -1,8 +1,5 @@
 WORK_DIR="$PWD"
 
-# zsh 不会自动加载 /etc/profile，为了 /etc/profile.d 的修改能立即生效，需要显式加载
-source /etc/profile
-
 # oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 # oh-my-zsh 主题 https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
@@ -21,6 +18,7 @@ source "$bicycle_path/bicycle-config/profile.sh"
 source "$bicycle_path/bicycle-config/alias.sh"
 
 append_path "$bicycle_path/bin"
+append_path "$bicycle_path/shell/bin"
 
 # 设置文件夹背景色
 eval "$(dircolors dir_colors)"
