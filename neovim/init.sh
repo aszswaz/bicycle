@@ -18,7 +18,7 @@ log_info "init neovim..."
 yay_install 'neovim-qt' 'git' 'curl' \
     'jq' 'astyle' 'autopep8' 'stylua' 'texlive-latexindent-meta' \
     'libxml2' 'shfmt' 'prettier' \
-    'xclip' 'npm' 'nodejs-lts-gallium'
+    'xclip' 'npm' 'nodejs-lts-gallium' 'ttf-jetbrains-mono'
 
 # 当前文件夹映射到 nvim 的默认配置文件路径
 if [[ ! -e "$HOME/.config/nvim" ]]; then

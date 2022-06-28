@@ -1,5 +1,5 @@
 " 设置字体
-:GuiFont JetBrains Mono:h10
+:GuiFont JetBrains Mono:h12
 " 关闭弹出菜单
 :GuiPopupmenu 0
 " 启用连体字
