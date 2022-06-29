@@ -47,3 +47,7 @@ alias source_node_bin="test -d ./node_modules/.bin && NODE_BIN='$(pwd)/node_modu
 # mongodb 的链接信息都存储在 ~/.mongorc.js 中所以这里就不需要在参数中进行指定
 alias mongo="mongo --nodb"
 alias mongosh="mongosh --nodb"
+
+# mysql
+alias mysql="mysql --ssl-mode DISABLED"
+alias mysql_local="MYSQL_PWD=root mysql --ssl-mode DISABLED -u root"
