@@ -46,8 +46,8 @@
 :nnoremap          <Home>     ^
 :inoremap          <Home>     <esc>^i
 " 全选
-:nnoremap          <C-a>      ggvG<cr>
-:inoremap          <C-a>      <esc>ggvG<cr>
+:nnoremap          <C-a>      ggvG$
+:inoremap          <C-a>      <esc>ggvG$
 " 退出终端模式
 :tnoremap          <esc>      <C-\><C-n>
 
