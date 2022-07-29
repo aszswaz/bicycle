@@ -20,7 +20,6 @@ if [[ $# > 0 ]]; then
         case $opt in
             s)
                 source_dir="$(realpath "${OPTARG}")"
-                echo $source_dir
                 ;;
             h | *)
                 usage
@@ -65,8 +64,7 @@ for file in ${source_files[*]}; do
     while true; do
         new_file="$source_dir/$(printf "%0${digit}d" $index)${suffix}"
         if [[ ! -e $new_file ]]; then
-            echo "$file -> $new_file"
-            mv "$file" "${new_file}"
+            mv -v "$file" "${new_file}"
             ((index++))
             break
         fi
