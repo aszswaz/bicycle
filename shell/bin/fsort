@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 # 对指定文件夹下的文件进行排序
 
@@ -15,18 +15,16 @@ function usage() {
 # 源文件夹
 source_dir="$PWD"
 
-if [[ $# > 0 ]]; then
-    while getopts ":h:s:" opt; do
-        case $opt in
-            s)
-                source_dir="$(realpath "${OPTARG}")"
-                ;;
-            h | *)
-                usage
-                ;;
-        esac
-    done
-fi
+while getopts ":h:s:" opt; do
+    case $opt in
+        s)
+            source_dir="$(realpath "${OPTARG}")"
+            ;;
+        h | *)
+            usage
+            ;;
+    esac
+done
 
 # 数位，用 N 个数字作为文件名称
 digit=0
@@ -40,8 +38,6 @@ for file in $source_dir/*; do
         continue
     fi
     source_files[$(( ${#source_files[*]} + 1 ))]="$file"
-    filename=$(basename "$file")
-    filename=${filename%.*}
 done
 
 file_count=${#source_files[*]}
@@ -58,8 +54,7 @@ fi
 index=1
 for file in ${source_files[*]}; do
     filename=$(basename "$file")
-    suffix=${filename##*.}
-    [[ $suffix != "" ]] && suffix=".$suffix"
+    [[ $filename =~ \\. ]] && suffix=".${filename##*.}" || suffix=""
 
     while true; do
         new_file="$source_dir/$(printf "%0${digit}d" $index)${suffix}"
