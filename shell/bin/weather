@@ -19,7 +19,7 @@ fi
 # 查询天气信息
 location="$1"
 if [[ "$location" == "" ]]; then
-    location="鄞州区"
+    location="闵行区"
 fi
 
 echo "Querying weather information for ${location}."
