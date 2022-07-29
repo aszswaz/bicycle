@@ -19,7 +19,8 @@ if [[ $# > 0 ]]; then
     while getopts ":h:s:" opt; do
         case $opt in
             s)
-                source_dir="${OPTARG}"
+                source_dir="$(realpath "${OPTARG}")"
+                echo $source_dir
                 ;;
             h | *)
                 usage
@@ -52,7 +53,7 @@ fi
 if [[ ${#file_count} < 2 ]]; then
     digit=2
 else
-    digit=${$file_count}
+    digit=${#file_count}
 fi
 
 index=1
