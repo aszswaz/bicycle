@@ -19,6 +19,7 @@ source "$bicycle_path/bicycle-config/alias.sh"
 
 append_path "$bicycle_path/bin"
 append_path "$bicycle_path/shell/bin"
+append_path "$bicycle_path/python"
 
 # 设置文件夹背景色
 eval "$(dircolors dir_colors)"
