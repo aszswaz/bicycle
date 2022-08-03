@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# 这个脚本用于对 v2ray，进行一些常规的初始化操作，比如安装 neovim
+# 这个脚本用于对 v2ray 服务器，进行一些常规的初始化操作，比如安装 neovim
 
 alias curl="curl -L"
 
@@ -12,23 +12,20 @@ fi
 set -e
 
 # 安装 git 和 zsh
-if ! command -v git >>/dev/null; then
+if ! command -v git >> /dev/null; then
     sudo yum install -y git
 fi
-if ! command -v zsh >>/dev/null; then
+if ! command -v zsh >> /dev/null; then
     sudo yum install -y zsh
 fi
-# 安装 util-linux-user，其中的 chsh 可用于修改用户登录 shell
-if ! command -v chsh >>/dev/null; then
-    sudo yum install util-linux-user
-fi
+
 # 安装 oh-my-zsh
 if [[ ! -e $HOME/.oh-my-zsh ]]; then
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 # 安装 neovim
-if ! command -v nvim >>/dev/null; then
+if ! command -v nvim >> /dev/null; then
     curl https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.tar.gz --output nvim-linux64.tar.gz
     tar zxvf nvim-linux64.tar.gz
     sudo mv nvim-linux64 /usr/local/share/nvim-linux64
@@ -39,12 +36,12 @@ if ! command -v nvim >>/dev/null; then
 fi
 
 # 安装 unzip
-if ! command -v unzip >>/dev/null; then
+if ! command -v unzip >> /dev/null; then
     sudo yum install -y unzip
 fi
 
 # 安装 firewall
-if ! command -v firewall-cmd >>/dev/null; then
+if ! command -v firewall-cmd >> /dev/null; then
     sudo yum install firewalld
     # 开放 v2ray 端口
     sudo firewall-cmd --zone=public --add-port=10087/tcp --add-port=10087/udp --permanent

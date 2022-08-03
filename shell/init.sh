@@ -1,9 +1,3 @@
-#!/bin/zsh -e
-
-source "$SHELL_LIB/index.sh"
-
-cd $(dirname $0)
-
 log_info "init shell..."
 
 # 建立项目的软链接
@@ -15,12 +9,13 @@ if [[ ! -e "$HOME/.oh-my-zsh" ]]; then
 fi
 
 # 替换 .zshrc
-if [[ -e "$HOME/.zshrc" ]]; then
-    if [[ $(readlink "$HOME/.zshrc") != "$PWD/.zshrc" ]]; then
+if [[ -L "$HOME/.zshrc" ]]; then
+    if [[ $(readlink "$HOME/.zshrc") != "$PWD/zshrc.sh" ]]; then
         rm "$HOME/.zshrc"
-        ln -s "$PWD/zshrc" "$HOME/.zshrc"
+        ln -s "$PWD/zshrc.sh" "$HOME/.zshrc"
     fi
 else
+    [[ -e "$HOME/.zshrc" ]] && rm "$HOME/.zshrc"
     ln -s "$PWD/zshrc.sh" "$HOME/.zshrc"
 fi
 

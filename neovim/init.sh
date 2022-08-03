@@ -1,8 +1,3 @@
-#!/bin/zsh -e
-
-source "$SHELL_LIB/index.sh"
-
-cd "$(dirname $0)"
 log_info "init neovim..."
 
 # 这些软件包都在 neovim 的脚本中应用，主要的软件包介绍如下
@@ -42,4 +37,5 @@ sudo zsh -e -c "
 [[ ! -e '/root/.local/share/nvim' ]] && ln -s '$nvim_share' '/root/.local/share/nvim'
 exit 0
 "
+unset nvim_share packer_path vim_plug_path
 log_info "init neovim sucess"
