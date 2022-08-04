@@ -19,4 +19,7 @@ else
     ln -s "$PWD/zshrc.sh" "$HOME/.zshrc"
 fi
 
+# nvm 可以用于管理多个版本的 nodejs
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
 log_info "init shell success"
