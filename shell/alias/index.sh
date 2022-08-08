@@ -44,3 +44,7 @@ alias mongosh="mongosh --nodb"
 # mysql
 alias mysql="mysql --ssl-mode DISABLED"
 alias mysql_local="MYSQL_PWD=root mysql --ssl-mode DISABLED -u root"
+# nodejs
+alias node10="/home/aszswaz/.local/share/node-v10.16.3-linux-x64/bin/node"
+alias npm10="/home/aszswaz/.local/share/node-v10.16.3-linux-x64/lib/node_modules/npm/bin/npm-cli.js"
+alias npx10="/home/aszswaz/.local/share/node-v10.16.3-linux-x64/lib/node_modules/npm/bin/npx-cli.js"
