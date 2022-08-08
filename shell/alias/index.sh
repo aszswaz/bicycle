@@ -9,10 +9,8 @@ alias unzip="unzip -O UTF-8"
 # 防火墙配置命令
 alias firewall-cmd="sudo firewall-cmd"
 alias f-c-p="sudo firewall-cmd --permanent"
-
 # 编辑这个脚本
 alias edit_public_alias="nvim $0; source $0"
-
 # 覆盖cp命令
 alias cp="cp -v -r"
 # mkdir 自动创建父文件夹，以及显示文件夹创建信息
@@ -23,11 +21,9 @@ alias rm="rm -r"
 alias doc_ls="find ${DOCUMENT_HOME} ! -regex '.*/\.git/.*' ! -path '*/node_modules/*' ! -ipath '*/dist/*' ! -name '*.jpg' ! -name '*.zip' ! -name '*.svg' ! -name '*.png' -type f"
 # ffmpeg
 alias ffplay="ffplay -autoexit"
-
 # maven 编译项目时指定使用 jdk8
 alias mvn8="JAVA_HOME=/usr/lib/jvm/java-8-openjdk mvn"
 alias mvn11="JAVA_HOME=/usr/lib/jvm/java-11-openjdk mvn"
-
 # cmake 项目编译
 alias cmake_build="cmake -S ./ -B ./builder && cmake --build ./builder"
 # 为 C、C++ 代码生成函数、全局变量、宏的索引，供 VIM 使用
@@ -38,16 +34,13 @@ alias systags="ctags -f ~/.config/nvim/systags /usr/include /usr/local/include"
 alias srctags="ctags -f tags ./src ./lib"
 # Cmake 项目生成 Makefile
 alias cmake_make="cmake -S ./ -B ./builder -DCMAKE_EXPORT_COMPILE_COMMANDS=on && test -e compile_commands.json || ln ./builder/compile_commands.json compile_commands.json"
-
 # 输出文件树时，忽略文件夹
 alias tree="tree -I '.git' -I 'node_modules' -I 'electron-builder'"
 # 加载 node_modules/bin 到 PATH
 alias source_node_bin="test -d ./node_modules/.bin && NODE_BIN='$(pwd)/node_modules/.bin' && test '$NODE_BIN' '=~' '$PATH' || PATH=$PATH:$NODE_BIN"
-
 # mongodb 的链接信息都存储在 ~/.mongorc.js 中所以这里就不需要在参数中进行指定
 alias mongo="mongo --nodb"
 alias mongosh="mongosh --nodb"
-
 # mysql
 alias mysql="mysql --ssl-mode DISABLED"
 alias mysql_local="MYSQL_PWD=root mysql --ssl-mode DISABLED -u root"

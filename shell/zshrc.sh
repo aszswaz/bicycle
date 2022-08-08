@@ -29,7 +29,3 @@ eval "$(dircolors dir_colors)"
 shell_lib_desyory
 [[ $PWD != $WORK_DIR ]] && cd "$WORK_DIR"
 unset bicycle_path WORK_DIR
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
