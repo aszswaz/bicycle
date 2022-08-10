@@ -48,6 +48,10 @@
 " 全选
 :nnoremap          <C-a>      gg^vG$
 :inoremap          <C-a>      <esc>gg^vG$
+" 打开/关闭终端
+:nnoremap <silent> <C-t><C-e> :ToggleTerm<cr>
+:inoremap <silent> <C-t><C-e> <esc>:ToggleTerm<cr>
+:tnoremap <silent> <C-t><C-e> <C-\><C-n>:ToggleTerm<cr>
 " 退出终端模式
 :tnoremap          <esc>      <C-\><C-n>
 
