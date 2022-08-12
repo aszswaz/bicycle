@@ -15,19 +15,29 @@ depends=(
     ttf-jetbrains-mono
     openbsd-netcat
 )
+
+build() {
+    cd ../
+    PROJECT_DIR="$PWD"
+
+    cd cpp
+    cmake -S . -B build --install-prefix "$pkgdir/usr"
+    cd build
+    make
+    cd "$PROJECT_DIR"
+}
+
 package() {
     cd ../
     PROJECT_DIR="$PWD"
     BIN_DIR="$pkgdir/usr/bin"
     mkdir -p "$BIN_DIR"
 
-    cd cpp
-    cmake -S . -B build --install-prefix "$pkgdir/usr"
-    cd build
-    make install
-    cd "$PROJECT_DIR"
-
+    cd cpp/build && make install && cd "$PROJECT_DIR"
     cp -R shell/bin/* "$BIN_DIR"
-
     cp python/url-format.py "$BIN_DIR/url-format"
+
+    for file in $pkgdir/usr/bin/*; do
+        chmod a+rx "$file"
+    done
 }

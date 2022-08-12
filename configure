@@ -15,14 +15,15 @@ function build() {
 
 function clean() {
     local file
-    for file in *.pkg.tar.zst; do
+    for file in $(find -name '*.pkg.tar.zst' -type f); do
         rm -v "$file"
     done
 
     files=('pkg' 'src' 'cpp/build' 'python/venv')
-    for file in ${file[*]}; do
+    for file in ${files[*]}; do
         if [[ -e $file ]]; then
-            rm -rfv "$file"
+            rm -rf "$file"
+            echo "removed: $file"
         fi
     done
 }
