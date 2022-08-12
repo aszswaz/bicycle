@@ -1,3 +1,11 @@
+#!/bin/zsh -e
+
+cd "$(dirname $0)"
+
+source ../shell/lib/index.sh
+
+log_info "init tools-config."
+
 # emacs
 if [[ -L "$HOME/.emacs" ]]; then
     if [[ "$(readlink "$HOME/.emacs")" != "$PWD/emacs.el" ]]; then
@@ -19,3 +27,5 @@ else
     [[ -e "$HOME/.gdbinit" ]] && rm "$HOME/.gdbinit"
     ln -s "$PWD/gdbinit" "$HOME/.gdbinit"
 fi
+
+log_info "init tools-config success"

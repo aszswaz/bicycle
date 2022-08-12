@@ -1,7 +1,3 @@
 # cmake
 compile_commands.json
-builder
-
-# package
-pkg
-*.pkg.tar.zst
+build/

@@ -1,19 +1,10 @@
-log_info "init neovim..."
+#!/bin/zsh -e
 
-# 这些软件包都在 neovim 的脚本中应用，主要的软件包介绍如下
-# astyle：格式化 C、C++、Java 代码
-# autopep8：格式化 Python 代码
-# stylua：格式化 lua 代码
-# texlive-latexindent-meta：格式化 latex 代码
-# libxml2：用于操作 xml 的，主要使用的是软件包中的 xmllint，用来格式化 xml
-# shfmt：格式化 shell 代码
-# prettier：格式化 js、html、css、scss、less 代码
-# xclip：这是一个 C 的依赖库，neovim 需要通过它才能把选中内容发送到系统剪切板
-# nodejs-lts-gallium：nodejs 稳定板
-yay_install 'neovim-qt' 'git' 'curl' \
-    'jq' 'astyle' 'autopep8' 'stylua' 'texlive-latexindent-meta' \
-    'libxml2' 'shfmt' 'prettier' \
-    'xclip' 'npm' 'nodejs-lts-gallium' 'ttf-jetbrains-mono'
+cd "$(dirname $0)"
+
+source ../shell/lib/index.sh
+
+log_info "init neovim..."
 
 # 当前文件夹映射到 nvim 的默认配置文件路径
 if [[ ! -e "$HOME/.config/nvim" ]]; then
@@ -32,7 +23,7 @@ vim_plug_path="$nvim_share/site/autoload/plug.vim"
 # 将 maven 配置应用到 root 账户
 sudo zsh -e -c "
 [[ ! -e '/root/.config' ]] && mkdir '/root/.config'
-[[ ! -e '/root/.local/share' ]] && mkdir '/root/.local/share'
+[[ ! -e '/root/.local/share' ]] && mkdir -p '/root/.local/share'
 [[ ! -e '/root/.config/nvim' ]] && ln -s '$PWD' '/root/.config/nvim'
 [[ ! -e '/root/.local/share/nvim' ]] && ln -s '$nvim_share' '/root/.local/share/nvim'
 exit 0

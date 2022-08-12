@@ -1,25 +1,34 @@
 #!/bin/zsh -e
 
-# 在计算机上进行初始化，以使用仓库中的脚本、neovim 配置等。
+cd "$(dirname $0)"
 
-# 切换路径到 init.sh 脚本所在文件夹
-cd $(dirname $0)
-# 加载 shell 函数
-source shell/lib/index.sh
+function build() {
+    git submodule init
 
-PROJECT_DIR="$PWD"
+    makepkg -f -s -i
 
-[[ ! -e bin ]] && mkdir bin
-# 获取子模块
-git submodule init || exit 1
+    ./bicycle-config/init.sh
+    ./neovim/init.sh
+    ./shell/init.sh
+    ./tools-config/init.sh
+}
 
-for module in *; do
-    if [[ ! -d $module ]]; then
-        continue
-    fi
-    log_info "Enter the module: $module"
-    cd "$module"
-    [[ -r ./init.sh ]] && . ./init.sh
-    log_info "To leave the module: $module"
-    cd "$PROJECT_DIR"
-done
+function clean() {
+    local file
+    for file in *.pkg.tar.zst; do
+        rm -v "$file"
+    done
+
+    files=('pkg' 'src' 'cpp/build' 'python/venv')
+    for file in ${file[*]}; do
+        if [[ -e $file ]]; then
+            rm -rfv "$file"
+        fi
+    done
+}
+
+if [[ $1 == clean ]]; then
+    clean
+else
+    build
+fi

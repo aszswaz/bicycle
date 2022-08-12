@@ -1,3 +1,9 @@
+#!/bin/zsh -e
+
+cd "$(dirname $0)"
+
+source ./lib/index.sh
+
 log_info "init shell..."
 
 # 建立项目的软链接
@@ -18,8 +24,5 @@ else
     [[ -e "$HOME/.zshrc" ]] && rm "$HOME/.zshrc"
     ln -s "$PWD/zshrc.sh" "$HOME/.zshrc"
 fi
-
-# nvm 可以用于管理多个版本的 nodejs
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
 log_info "init shell success"
