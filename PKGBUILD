@@ -1,6 +1,6 @@
 pkgname=aszswaz-tools
 pkgver=v1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Some gadgets written by individuals."
 arch=(x86_64)
 # 软件包构建依赖
@@ -14,6 +14,7 @@ depends=(
     ccls gcc make cmake ctags python-pip
     ttf-jetbrains-mono
     qt5-base
+    gdb valgrind
 )
 
 build() {
@@ -21,7 +22,7 @@ build() {
     PROJECT_DIR="$PWD"
 
     cd cpp
-    cmake -S . -B build --install-prefix "$pkgdir/usr"
+    cmake -DCMAKE_BUILD_TYPE=RELEASE -S . -B build --install-prefix "$pkgdir/usr"
     cd build
     make
     cd "$PROJECT_DIR"

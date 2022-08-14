@@ -20,6 +20,8 @@ source "$bicycle_path/bicycle-config/alias.sh"
 eval "$(dircolors dir_colors)"
 [[ ! -e "${HOME}/.dir_colors" ]] && ln -s "$PWD/dir_colors" "${HOME}/.dir_colors"
 
+# gdb 调试信息库
+export DEBUGINFOD_URLS="https://debuginfod.archlinux.org"
 
 [[ $PWD != $WORK_DIR ]] && cd "$WORK_DIR"
 unset bicycle_path WORK_DIR

@@ -13,16 +13,16 @@
 :nnoremap <silent> <A-z>      :redo<cr>
 :inoremap <silent> <A-z>      <esc>:redo<cr>a
 " 普通模式删除行
-:nnoremap          <C-y>      dd<End>
+:nnoremap <silent> <C-y>      :call DeleteRow()<cr>
 " 编辑模式删除行，并吧光标移动到行尾
-:inoremap          <C-y>      <esc>ddA
+:inoremap <silent> <C-y>      <esc>:call DeleteRow()<cr>a
 " 粘贴
 :nnoremap          <C-p>      <esc>"+pa
 :inoremap          <C-p>      <esc>"+pa
 :tnoremap          <C-p>      <C-\><C-n>"+pa
 " 复制行，yy是复制，p是在新的一行粘贴
-:nnoremap          <C-d>      yyp<End>
-:inoremap          <C-d>      <esc>yypA
+:nnoremap <silent> <C-d>      :call CopyRow()<cr>
+:inoremap <silent> <C-d>      <esc>:call CopyRow()<cr>a
 " 复制选中文本到系统剪切板
 :vnoremap          <C-c>      "+y
 " 剪切选中文本到系统剪切板
@@ -65,14 +65,23 @@
 :tnoremap <silent> <A-Right>  <C-\><C-n>:BufferNext<cr>
 " 切换到指定标签页
 :nnoremap <silent> <A-1>      :BufferGoto 1<CR>
+:inoremap <silent> <A-1>      :BufferGoto 1<CR>
 :nnoremap <silent> <A-2>      :BufferGoto 2<CR>
+:inoremap <silent> <A-2>      :BufferGoto 2<CR>
 :nnoremap <silent> <A-3>      :BufferGoto 3<CR>
+:inoremap <silent> <A-3>      :BufferGoto 3<CR>
 :nnoremap <silent> <A-4>      :BufferGoto 4<CR>
+:inoremap <silent> <A-4>      :BufferGoto 4<CR>
 :nnoremap <silent> <A-5>      :BufferGoto 5<CR>
+:inoremap <silent> <A-5>      :BufferGoto 5<CR>
 :nnoremap <silent> <A-6>      :BufferGoto 6<CR>
+:inoremap <silent> <A-6>      :BufferGoto 6<CR>
 :nnoremap <silent> <A-7>      :BufferGoto 7<CR>
+:inoremap <silent> <A-7>      :BufferGoto 7<CR>
 :nnoremap <silent> <A-8>      :BufferGoto 8<CR>
+:inoremap <silent> <A-8>      :BufferGoto 8<CR>
 :nnoremap <silent> <A-9>      :BufferLast<CR>
+:inoremap <silent> <A-9>      :BufferLast<CR>
 " 保存文件、关闭缓冲区并关闭标签页
 :nnoremap <silent> <A-c>      :call CloseTab()<cr>
 :inoremap <silent> <A-c>      <esc>:call CloseTab()<cr>

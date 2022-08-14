@@ -1,4 +1,5 @@
 # 插件仓库
-vim-plugins/
-bundle/
-Session.vim
+/vim-plugins
+/bundle
+/Session.vim
+/tags

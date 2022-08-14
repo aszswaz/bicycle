@@ -1,6 +1,3 @@
-# 编译命令输出到 complie_commands.json，让 ccls 等工具可以提供辅助
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
 set(MODULE_NAME "message")
 
 message(STATUS ${MODULE_NAME})

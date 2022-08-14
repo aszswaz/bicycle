@@ -26,3 +26,102 @@
     " 关闭 buffer
     execute "BufferClose"
 :endfunction
+
+" 复制行
+:function! CopyRow()
+    let current_column = col(".")
+    execute("normal! yyp")
+    execute("normal! " . current_column . "|")
+:endfunction
+
+" 删除行
+:function! DeleteRow()
+    let current_column = col(".")
+    execute("normal! dd")
+    execute("normal! " . current_column . "|")
+:endfunction
+
+" jobstart 的回调函数
+:function! JobHandler(job_id, data, event) dict
+    if a:event == 'stdout'
+        echo join(a:data, nr2char(10))
+    elseif a:event == 'stderr'
+        echohl ErrorMsg | echo join(a:data, nr2char(10)) | echohl None
+    elseif a:event == "exit"
+        echo self.command . " exit code: " . a:data
+    endif
+:endfunction
+
+:function! UpdateCtags()
+    if !has('linux')
+        echohl ErrorMsg | echo 'This function only supports running under the linux operating system.' | echohl None
+        return
+    endif
+
+    echo "Generating labels..."
+    let callbacks = {
+        \ 'on_stdout': function('JobHandler'),
+        \ 'on_stderr': function('JobHandler'),
+        \ 'on_exit': function('JobHandler')
+    \ }
+    " 异步执行外部命令
+    call jobstart('ctags -f ' . g:tags_file . ' -I __THROW --extras=+F --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --fields=+S -R /usr/include',
+                \ extend({'command': 'ctags'}, callbacks))
+:endfunction
+
+:function! LoadCtags()
+    if !has('linux')
+        echohl ErrorMsg | echo 'This function only supports running under the linux operating system.' | echohl None
+        return
+    endif
+
+    if filereadable(g:tags_file)
+        execute('set tags=' . g:tags_file)
+    else
+        call UpdateCtags()
+    endif
+:endfunction
+
+" 通过外部工具格式化文件
+:function! FileFormat()
+    " 获取当前行号
+    let current_line = line('.')
+    let current_column = col('.')
+
+    if &filetype == 'json'
+        let command = 'jq'
+    elseif &filetype == "java"
+        let command = 'astyle --style=java --indent=spaces=' . &tabstop . ' --mode=java'
+    elseif &filetype == "python"
+        let command = 'autopep8 --max-line-length 10000 -'
+    elseif &filetype == "lua"
+        let command = 'stylua - --indent-type Spaces --indent-width ' . &tabstop . ' --call-parentheses None --quote-style AutoPreferDouble'
+    elseif &filetype == "tex" || &filetype == "latex"
+        let command = 'latexindent'
+    elseif &filetype == "xml"
+        let command = 'xmllint --encode UTF-8 --format -'
+    elseif &filetype == "cpp" || &filetype == "c"
+        let command = 'astyle --style=java --indent=spaces=' . &tabstop . ' --pad-oper -N -C --indent-labels -xw -xW -w --mode=c'
+    elseif &filetype == "sh" || &filetype == "zsh" || &filetype == "bash"
+        let command = 'shfmt -i ' . &tabstop
+    elseif &filetype == "typescript" || &filetype == "javascript" || &filetype == "js"
+        let command = 'prettier --parser typescript --print-width --tab-width ' . &tabstop
+    elseif &filetype == "css" || &filetype == "scss" || &filetype == "less" || &filetype == "markdown" || &filetype == "vue" || &filetype == "html"
+        let command = 'prettier --prettier ' . &filetype . ' --print-width 160 --tab-width ' . &tabstop
+    else
+        echo "Unknown file type: " . &filetype
+        return
+    endif
+
+    let output = system(command, getline(1, '$'))
+    if v:shell_error == 0
+        " clear buffer
+        silent normal! gg_dG
+        call setline(1, split(output, '\n'))
+        " 光标回到到原本的行
+        execute("normal! " . current_line . "G")
+        execute("normal! " . current_column . "|")
+    else
+        echohl ErrorMsg | echo output | echohl None
+    endif
+:endfunction
