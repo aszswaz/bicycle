@@ -48,3 +48,5 @@ alias mysql_local="MYSQL_PWD=root mysql --ssl-mode DISABLED -u root"
 alias node10="/home/aszswaz/.local/share/node-v10.16.3-linux-x64/bin/node"
 alias npm10="/home/aszswaz/.local/share/node-v10.16.3-linux-x64/lib/node_modules/npm/bin/npm-cli.js"
 alias npx10="/home/aszswaz/.local/share/node-v10.16.3-linux-x64/lib/node_modules/npm/bin/npx-cli.js"
+# rsync
+alias rsync="rsync -a -v"
