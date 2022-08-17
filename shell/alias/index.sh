@@ -19,11 +19,11 @@ alias mkdir="mkdir -v -p"
 alias rm="rm -r"
 # 列出文档仓库中所有的文本文件
 alias doc_ls="find ${DOCUMENT_HOME} ! -regex '.*/\.git/.*' ! -path '*/node_modules/*' ! -ipath '*/dist/*' ! -name '*.jpg' ! -name '*.zip' ! -name '*.svg' ! -name '*.png' -type f"
-# ffmpeg
-alias ffplay="ffplay -autoexit"
+
 # maven 编译项目时指定使用 jdk8
 alias mvn8="JAVA_HOME=/usr/lib/jvm/java-8-openjdk mvn"
 alias mvn11="JAVA_HOME=/usr/lib/jvm/java-11-openjdk mvn"
+
 # cmake 项目编译
 alias cmake_build="cmake -S ./ -B ./builder && cmake --build ./builder"
 # 为 C、C++ 代码生成函数、全局变量、宏的索引，供 VIM 使用
@@ -38,15 +38,17 @@ alias cmake_make="cmake -S ./ -B ./builder -DCMAKE_EXPORT_COMPILE_COMMANDS=on &&
 alias tree="tree -I '.git' -I 'node_modules' -I 'electron-builder'"
 # 加载 node_modules/bin 到 PATH
 alias source_node_bin="test -d ./node_modules/.bin && NODE_BIN='$(pwd)/node_modules/.bin' && test '$NODE_BIN' '=~' '$PATH' || PATH=$PATH:$NODE_BIN"
+
 # mongodb 的链接信息都存储在 ~/.mongorc.js 中所以这里就不需要在参数中进行指定
 alias mongo="mongo --nodb"
 alias mongosh="mongosh --nodb"
-# mysql
+
 alias mysql="mysql --ssl-mode DISABLED"
 alias mysql_local="MYSQL_PWD=root mysql --ssl-mode DISABLED -u root"
-# nodejs
+
 alias node10="/home/aszswaz/.local/share/node-v10.16.3-linux-x64/bin/node"
 alias npm10="/home/aszswaz/.local/share/node-v10.16.3-linux-x64/lib/node_modules/npm/bin/npm-cli.js"
 alias npx10="/home/aszswaz/.local/share/node-v10.16.3-linux-x64/lib/node_modules/npm/bin/npx-cli.js"
-# rsync
+
 alias rsync="rsync -a -v"
+alias ffplay="ffplay -vf 'drawtext=text='%{pts\:hms}':box=1:x=(w-tw)/2:y=h-(2*lh):boxborderw=4' -audoexit"

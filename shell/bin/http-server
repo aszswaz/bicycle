@@ -71,4 +71,4 @@ function server_close() {
     exit 0
 }
 
-main 8080
+main $@
