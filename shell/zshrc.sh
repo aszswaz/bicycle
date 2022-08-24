@@ -3,7 +3,7 @@ WORK_DIR="$PWD"
 # oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 # oh-my-zsh 主题 https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="fino-time"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 

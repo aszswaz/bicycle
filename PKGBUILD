@@ -1,6 +1,6 @@
 pkgname=aszswaz-tools
 pkgver=v1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Some gadgets written by individuals."
 arch=(x86_64)
 # 软件包构建依赖
@@ -13,8 +13,9 @@ depends=(
     jdk-openjdk openjdk-doc openjdk-src jdk11-openjdk openjdk11-doc openjdk11-src jdk8-openjdk openjdk8-doc openjdk8-src
     ccls gcc make cmake ctags python-pip
     ttf-jetbrains-mono
-    qt5-base
+    qt5-base nlohmann-json
     gdb valgrind
+    curl v2ray
 )
 
 build() {
