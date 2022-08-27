@@ -50,5 +50,5 @@ alias node10="/home/aszswaz/.local/share/node-v10.16.3-linux-x64/bin/node"
 alias npm10="/home/aszswaz/.local/share/node-v10.16.3-linux-x64/lib/node_modules/npm/bin/npm-cli.js"
 alias npx10="/home/aszswaz/.local/share/node-v10.16.3-linux-x64/lib/node_modules/npm/bin/npx-cli.js"
 
-alias rsync="rsync -a -v"
+alias rsync="rsync -v -r -p -E -X -t -U -N"
 alias ffplay="ffplay -vf 'drawtext=text='%{pts\:hms}':box=1:x=(w-tw)/2:y=h-(2*lh):boxborderw=4' -audoexit"
