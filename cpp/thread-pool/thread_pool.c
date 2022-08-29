@@ -130,7 +130,7 @@ void thread_pool_shutdown(thread_pool_t *self) {
 }
 
 int thread_pool_execute(thread_pool_t *self, thread_run run, void *args) {
-    task_t *task, *task_head, *task_tail;
+    task_t *task, *task_head;
     int code;
 
     if (!run) return EINVAL;
@@ -145,9 +145,8 @@ int thread_pool_execute(thread_pool_t *self, thread_run run, void *args) {
     PTHREAD_ERROR(pthread_mutex_lock(&self->tasks_lock));
     task_head = self->task_head;
     if (task_head) {
-        task_tail = self->task_tail;
+        self->task_tail->next = task;
         self->task_tail = task;
-        task_tail->next = task;
     } else {
         self->task_head = task;
         self->task_tail = task;
