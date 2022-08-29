@@ -144,13 +144,11 @@ int thread_pool_execute(thread_pool_t *self, thread_run run, void *args) {
 
     PTHREAD_ERROR(pthread_mutex_lock(&self->tasks_lock));
     task_head = self->task_head;
-    if (task_head) {
+    if (task_head)
         self->task_tail->next = task;
-        self->task_tail = task;
-    } else {
+    else
         self->task_head = task;
-        self->task_tail = task;
-    }
+    self->task_tail = task;
 
     PTHREAD_ERROR(pthread_cond_signal(&self->tasks_ready));
     PTHREAD_ERROR(pthread_mutex_unlock(&self->tasks_lock));
