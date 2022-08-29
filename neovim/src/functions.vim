@@ -116,7 +116,7 @@
     let output = system(command, getline(1, '$'))
     if v:shell_error == 0
         " clear buffer
-        silent normal! gg_dG
+        silent %delete _
         call setline(1, split(output, '\n'))
         " 光标回到到原本的行
         execute("normal! " . current_line . "G")
@@ -124,4 +124,13 @@
     else
         echohl ErrorMsg | echo output | echohl None
     endif
+:endfunction
+
+" Trim trailing whitespace.
+:function! Trim()
+    let current_line = line('.')
+    let current_column = col('.')
+    :%s/\s\+$//e
+    execute("normal! " . current_line . "G")
+    execute("normal! " . current_column . "|")
 :endfunction

@@ -37,7 +37,7 @@
 
 " 根据文件类型格式化文件
 :nnoremap <silent> <C-f>      :call FileFormat()<cr>
-:inoremap <silent> <C-f>      <esc>:call FileFormat()<cr>
+:inoremap <silent> <C-f>      <esc>:call FileFormat()<cr>a
 " 翻译单词
 :inoremap <silent> <C-t><C-s> <esc>:TranslateW<cr>A
 :nnoremap <silent> <C-t><C-s> <esc>:TranslateW<cr>

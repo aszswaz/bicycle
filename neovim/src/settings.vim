@@ -62,4 +62,4 @@
 :set guicursor+=a:blinkon1
 
 " 写出文件之前，删除尾部空格
-:autocmd BufWritePre * :%s/\s\+$//e
+:autocmd BufWritePre * :call Trim()
