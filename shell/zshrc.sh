@@ -70,7 +70,7 @@ ZSH_THEME="fino-time"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=('git' 'pip' 'pipenv' 'pyenv' 'pylint' 'python' 'golang' 'history' 'gradle' 'node' 'npm' 'mvn')
+plugins=('git' 'pip' 'pipenv' 'pyenv' 'pylint' 'python' 'golang' 'history' 'gradle' 'node' 'npm' 'mvn' 'zsh-autosuggestions' 'zsh-syntax-highlighting')
 
 source $ZSH/oh-my-zsh.sh
 
