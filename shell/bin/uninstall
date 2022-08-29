@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # 输出帮助信息
 if [[ "$1" == "--help" ]]; then

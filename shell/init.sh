@@ -1,4 +1,4 @@
-#!/bin/zsh -e
+#!/bin/sh -e
 
 cd "$(dirname $0)"
 
@@ -9,20 +9,15 @@ log_info "init shell..."
 # 建立项目的软链接
 [[ ! -e "$HOME/.bicycle" ]] && ln -s "$PROJECT_DIR" "$HOME/.bicycle"
 
-# 安装 oh-my-zsh
-if [[ ! -e "$HOME/.oh-my-zsh" ]]; then
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi
-
-# 替换 .zshrc
-if [[ -L "$HOME/.zshrc" ]]; then
-    if [[ $(readlink "$HOME/.zshrc") != "$PWD/zshrc.sh" ]]; then
-        rm "$HOME/.zshrc"
-        ln -s "$PWD/zshrc.sh" "$HOME/.zshrc"
+# 替换 $HOME/.config/fish/config.fish
+if [[ -L "$HOME/.config/fish/config.fish" ]]; then
+    if [[ $(readlink "$HOME/.config/config.fish") != "$PWD/fish.fish" ]]; then
+        rm "$HOME/.config/fish/config.fish"
+        ln -s "$PWD/fish.fish" "$HOME/.config/fish/config.fish"
     fi
 else
-    [[ -e "$HOME/.zshrc" ]] && rm "$HOME/.zshrc"
-    ln -s "$PWD/zshrc.sh" "$HOME/.zshrc"
+    [[ -e "$HOME/.config/fish/config.fish" ]] && rm "$HOME/.config/fish/config.fish"
+    ln -s "$PWD/fish.fish" "$HOME/.config/fish/config.fish"
 fi
 
 log_info "init shell success"

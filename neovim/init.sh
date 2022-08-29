@@ -1,4 +1,4 @@
-#!/bin/zsh -e
+#!/bin/sh -e
 
 cd "$(dirname $0)"
 
@@ -21,7 +21,7 @@ vim_plug_path="$nvim_share/site/autoload/plug.vim"
 [[ ! -e "$vim_plug_path" ]] && curl --disable -fLo "$vim_plug_path" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # 将 maven 配置应用到 root 账户
-sudo zsh -e -c "
+sudo $SHELL -e -c "
 [[ ! -e '/root/.config' ]] && mkdir '/root/.config'
 [[ ! -e '/root/.local/share' ]] && mkdir -p '/root/.local/share'
 [[ ! -e '/root/.config/nvim' ]] && ln -s '$PWD' '/root/.config/nvim'

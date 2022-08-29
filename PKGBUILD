@@ -16,6 +16,7 @@ depends=(
     qt5-base nlohmann-json
     gdb valgrind
     curl v2ray
+    fish
 )
 
 build() {
