@@ -1,14 +1,31 @@
 #include <stdio.h>
 #include "../thread_pool.h"
-#include "../../container/array_list.h"
+#include <pthread.h>
+#include <unistd.h>
+
+#define STAND_ERROR(expression) \
+    if (expression) { \
+        perror(__FILE_NAME__); \
+        return -1; \
+    }
+
+void test_run(void *data) {
+    pthread_t thread_id = pthread_self();
+    printf("thread id: 0x%lX ====================================next====================================\n", thread_id);
+    for (int i = 0; i < 12; i++) {
+        printf("thread id: 0x%lX, i: %d\n", thread_id, i);
+        sleep(1);
+    }
+}
 
 int main() {
-    array_list_t *list;
+    thread_pool_t *thpool;
 
-    list = array_list_new(10, NULL);
+    thpool = thread_pool_new(4);
+    STAND_ERROR(!thpool);
 
-    array_list_add(list, "Hello World");
-    printf("array size: %d\n", array_list_size(list));
-
-    array_list_free(list);
+    for (int i = 0; i < 10; i++) thread_pool_execute(thpool, test_run, NULL);
+    sleep(60);
+    for (int i = 0; i < 10; i++) thread_pool_execute(thpool, test_run, NULL);
+    thread_pool_shutdown(thpool);
 }

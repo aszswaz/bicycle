@@ -43,7 +43,7 @@ static void *thread_pool_poll(void *args) {
     while(!self->shutdown) {
         PTHREAD_ERROR(pthread_mutex_lock(&self->tasks_lock));
         if (!self->next) {
-            PTHREAD_ERROR(pthread_cond_signal(&self->tasks_ready));
+            PTHREAD_ERROR(pthread_cond_wait(&self->tasks_ready, &self->tasks_lock));
         }
         task = self->next;
         if (task) {
@@ -96,7 +96,9 @@ thread_pool_t *thread_pool_new(uint16_t total) {
     for (uint16_t i = 0; i < total; i++) {
         thread_id = malloc(sizeof(pthread_t));
         if (!thread_id) goto error;
+        memset(thread_id, 0, sizeof(pthread_t));
         PTHREAD_ERROR(pthread_create(thread_id, NULL, thread_pool_poll, self));
+        array_list_add(self->threads, thread_id);
     }
 
     return self;
@@ -144,9 +146,9 @@ int thread_pool_execute(thread_pool_t *self, thread_run run, void *args) {
         next->next = task;
     } else {
         self->next = task;
-        PTHREAD_ERROR(pthread_cond_signal(&self->tasks_ready));
     }
 
+    PTHREAD_ERROR(pthread_cond_signal(&self->tasks_ready));
     PTHREAD_ERROR(pthread_mutex_unlock(&self->tasks_lock));
     return 0;
 error:
