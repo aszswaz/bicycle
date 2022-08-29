@@ -2,9 +2,7 @@
 
 cd "$(dirname $0)"
 
-if [[ $1 == "debug" ]]; then
-    cmake -DCMAKE_BUILD_TYPE=debug -S . -B build
-else
-    cmake -DCMAKE_BUILD_TYPE=release -S . -B build
-fi
-[[ ! -e compile_commands.json ]] && ln -s "$PWD/build/compile_commands.json" compile_commands.json
+BUILD_DIR="build"
+
+cmake -DCMAKE_BUILD_TYPE=debug -S . -B "$BUILD_DIR"
+[[ ! -e compile_commands.json ]] && ln -s "$BUILD_DIR/compile_commands.json" compile_commands.json

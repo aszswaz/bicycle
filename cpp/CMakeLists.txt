@@ -2,23 +2,26 @@
 cmake_minimum_required(VERSION 3.22.2)
 project(bicycle)
 
-# 编译命令输出到 complie_commands.json，让 ccls 等工具可以提供辅助
+message(STATUS "cmake binary directory: ${CMAKE_BINARY_DIR}")
+
+# Compile commands are output to "compile_commands.json", so that tools such as "ccls" can provide assistance.
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-# gdb 调试设置
-set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -O0 -g3 -ggdb")
-set(CMAKE_C_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -O0 -g3 -ggdb")
+# Set gcc compile options.
+set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -Wall -g3 -ggdb")
+set(CMAKE_C_FLAGS_DEBUG "$ENV{CFLAGS} -Wall -g3 -ggdb")
 set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
-set(CMAKE_C_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
-# C++ 标准
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_C_FLAGS_RELEASE "$ENV{CFLAGS} -O3 -Wall")
 
-# 子模块
-add_subdirectory(./src/message)
-add_subdirectory(./src/fsort)
-add_subdirectory(./src/v2ray-ping)
+# submodule
+add_subdirectory(./message)
+add_subdirectory(./fsort)
+add_subdirectory(./v2ray-ping)
+add_subdirectory(./container)
+add_subdirectory(./thread-pool)
 
-# 程序的安装命令
+# The target that needs to be installed when "make install" is executed.
 install(TARGETS message)
 install(TARGETS fsort)
 install(TARGETS v2ray-ping)
+install(TARGETS container)
+install(TARGETS thread_pool)

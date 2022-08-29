@@ -1,6 +1,6 @@
 set(MODULE_NAME "fsort")
 
-message(STATUS ${MODULE_NAME})
+message(STATUS "module: ${MODULE_NAME}")
 
 add_executable(
     ${MODULE_NAME}
