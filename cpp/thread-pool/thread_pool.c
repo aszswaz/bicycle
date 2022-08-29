@@ -28,7 +28,8 @@ struct thread_pool {
     array_list_t *threads;
     pthread_cond_t tasks_ready;
     pthread_mutex_t tasks_lock;
-    task_t *next;
+    task_t *task_head;
+    task_t *task_tail;
 };
 
 /**
@@ -42,12 +43,12 @@ static void *thread_pool_poll(void *args) {
 
     while(!self->shutdown) {
         PTHREAD_ERROR(pthread_mutex_lock(&self->tasks_lock));
-        if (!self->next) {
+        if (!self->task_head) {
             PTHREAD_ERROR(pthread_cond_wait(&self->tasks_ready, &self->tasks_lock));
         }
-        task = self->next;
+        task = self->task_head;
         if (task) {
-            self->next = task->next;
+            self->task_head = task->next;
             PTHREAD_ERROR(pthread_mutex_unlock(&self->tasks_lock));
             task->run(task->args);
             free(task);
@@ -67,7 +68,9 @@ error:
 static void thread_pool_free(thread_pool_t *self) {
     if (self->threads) array_list_free(self->threads);
 
-    task_t *next = self->next, *intermediate;
+    task_t *next, *intermediate;
+    next = self->task_head;
+
     while(next) {
         intermediate = next->next;
         free(next);
@@ -127,7 +130,7 @@ void thread_pool_shutdown(thread_pool_t *self) {
 }
 
 int thread_pool_execute(thread_pool_t *self, thread_run run, void *args) {
-    task_t *task, *next;
+    task_t *task, *task_head, *task_tail;
     int code;
 
     if (!run) return EINVAL;
@@ -140,12 +143,14 @@ int thread_pool_execute(thread_pool_t *self, thread_run run, void *args) {
     task->args = args;
 
     PTHREAD_ERROR(pthread_mutex_lock(&self->tasks_lock));
-    next = self->next;
-    if (next) {
-        while(next->next) next = next->next;
-        next->next = task;
+    task_head = self->task_head;
+    if (task_head) {
+        task_tail = self->task_tail;
+        self->task_tail = task;
+        task_tail->next = task;
     } else {
-        self->next = task;
+        self->task_head = task;
+        self->task_tail = task;
     }
 
     PTHREAD_ERROR(pthread_cond_signal(&self->tasks_ready));
