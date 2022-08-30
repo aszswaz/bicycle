@@ -1,6 +1,3 @@
 [submodule "bicycle-config"]
 	path = bicycle-config
 	url = git@gitea.aszswaz.cn:aszswaz/bicycle-config.git
-[submodule "neovim-settings"]
-	path = neovim-settings
-	url = git@gitea.aszswaz.cn:aszswaz/neovim-settings.git
