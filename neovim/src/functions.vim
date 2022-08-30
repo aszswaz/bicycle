@@ -21,10 +21,10 @@
     let current_buffer = bufnr("%")
     " 如果当前 buffer 已被用户修改，先保存到文件
     if getbufinfo(current_buffer)[0].changed
-        execute "w"
+        w
     endif
     " 关闭 buffer
-    execute "BufferClose"
+    BufferClose
 :endfunction
 
 " 复制行
@@ -128,9 +128,17 @@
 
 " Trim trailing whitespace.
 :function! Trim()
-    let current_line = line('.')
-    let current_column = col('.')
-    :%s/\s\+$//e
-    execute("normal! " . current_line . "G")
-    execute("normal! " . current_column . "|")
+    let line_count = line('$')
+    for line_number in range(1, line_count)
+        let line_text = getline(line_number)
+        " Find the last non-space character.
+        let i = strlen(line_text) - 1
+        while i > 0
+            if strgetchar(line_text, i) != 32
+                break
+            endif
+            let i -= 1
+        endwhile
+        call setline(line_number, line_text[0:i])
+    endfor
 :endfunction

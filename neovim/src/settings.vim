@@ -5,18 +5,18 @@
 " 根据文件类型，设置制表符的宽度
 :set tabstop=4
 :autocmd FileType json,html,xml set tabstop=2
-" 缩进应该跨越的宽度，0表示复制 tabstop 的值，-1 表示复制 shiftwidth 的值
+" 缩进应该跨越的宽度，0 表示复制 tabstop 的值，-1 表示复制 shiftwidth 的值
 :set softtabstop=0
 " shiftwidth 给出用于移位命令的宽度，例如 << , >>和 == .特殊值 0 表示复制 'tabstop' 的值。
 :set shiftwidth=0
-" 设置 expandtab，缩进总是只使用空格字符。否则，按 <Tab>插入尽可能多的制表字符，并用空格字符完成缩进宽度。
+" 设置 expandtab，缩进总是只使用空格字符。否则，按 <Tab> 插入尽可能多的制表字符，并用空格字符完成缩进宽度。
 :set expandtab
 " 移动文本时将缩进舍入为 'shiftwidth' 的倍数
 :set shiftround
 " 重现上一行的缩进
 :set autoindent
 " 设置光标距离窗口最下面的最小行数，比如一个 vim 屏幕的最下方是第 66 行，那么当光标到达第 61 行时就开始向上翻滚。
-:set scrolloff=5
+:set scrolloff=3
 
 " 显示行号
 :set number
@@ -34,11 +34,6 @@
 :set langmenu=zh_CN.UTF-8
 :set helplang=cn
 :set magic
-" 配置括号的高亮，ctermbg为背景色，ctermfg为文字颜色
-" 开启正则
-:hi MatchParen ctermbg=NONE ctermfg=green
-" 设置状态栏显示文件名和文件路径
-:set laststatus=2
 " 自动换行
 :set nowrap
 " 文件在外部被修改，自动更新
@@ -50,8 +45,6 @@
 " 设置新的分屏出现的位置，如果是垂直分屏，新的分屏出现在右边，如果是水平分屏，新的分屏在下边
 :set splitright
 :set splitbelow
-" 一直显示标签栏，默认值为 1，表示存在两个标签时才会显示标签栏
-:set showtabline=2
 " 启用真彩色
 :set termguicolors
 " gdb debug 设置

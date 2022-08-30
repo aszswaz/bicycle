@@ -7,8 +7,8 @@
 :nnoremap <silent> <C-q>      :wa<cr>:qa!<cr>
 :inoremap <silent> <C-q>      <esc>:wa<cr>:qa!<cr>
 " 撤销
-:nnoremap <silent> <C-z>      :u<cr>
-:inoremap <silent> <C-z>      <esc>:u<cr>a
+:nnoremap <silent> <C-z>      :undo<cr>
+:inoremap <silent> <C-z>      <esc>:undo<cr>a
 " 重做
 :nnoremap <silent> <A-z>      :redo<cr>
 :inoremap <silent> <A-z>      <esc>:redo<cr>a
