@@ -8,7 +8,7 @@ function build() {
     makepkg -f -s -i
 
     ./bicycle-config/init.sh
-    ./neovim/init.sh
+    ./neovim-settings/init.sh
     ./shell/init.sh
     ./tools-config/init.sh
 }
