@@ -20,4 +20,9 @@ else
     ln -s "$PWD/fish.fish" "$HOME/.config/fish/config.fish"
 fi
 
+# 安装 oh-my-fish
+if [[ ! -e $HOME/.config/fish/conf.d/omf.fish ]]; then
+    curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+fi
+
 log_info "init shell success"

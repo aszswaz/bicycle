@@ -17,6 +17,7 @@ depends=(
     gdb valgrind
     curl v2ray
     fish
+    python-pynvim
 )
 
 build() {
