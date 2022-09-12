@@ -11,7 +11,6 @@ alias zhiweidata="cd $HOME/Documents/project/zhiweidata && ls --time-style='long
 alias mvn8="JAVA_HOME=/usr/lib/jvm/java-8-openjdk mvn"
 alias mvn11="JAVA_HOME=/usr/lib/jvm/java-11-openjdk mvn"
 
-alias cmake="cmake -S ./ -B ./build && cmake --build ./build"
 alias ctags="ctags -I __THROW --extras=+F --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --fields=+S -R"
 alias systags="ctags -f ~/.config/nvim/systags /usr/include /usr/local/include"
 
