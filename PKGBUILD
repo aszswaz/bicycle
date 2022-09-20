@@ -7,17 +7,17 @@ arch=(x86_64)
 makedepends=(gcc make cmake python python-pip)
 # 软件包依赖
 depends=(
-    neovim neovim-qt openbsd-netcat git
-    jq astyle autopep8 stylua texlive-latexindent-meta libxml2 shfmt prettier xclip
+    gcc nasm
     nodejs python
     jdk-openjdk openjdk-doc openjdk-src jdk11-openjdk openjdk11-doc openjdk11-src jdk8-openjdk openjdk8-doc openjdk8-src
-    ccls gcc make cmake ctags python-pip
+    ccls make cmake ctags python-pip git gdb valgrind
+    qt5-base nlohmann-json python-pynvim
+    neovim neovim-qt
+    jq astyle autopep8 stylua texlive-latexindent-meta libxml2 shfmt prettier
+    openbsd-netcat v2ray curl
+    xclip
     ttf-jetbrains-mono
-    qt5-base nlohmann-json
-    gdb valgrind
-    curl v2ray
     fish
-    python-pynvim
 )
 
 build() {
