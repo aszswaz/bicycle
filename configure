@@ -1,11 +1,14 @@
-#!/bin/sh -e
+#!/bin/bash
+
+set -o errexit
 
 cd "$(dirname $0)"
 
 function build() {
     git submodule init
 
-    makepkg -f -s -i
+    makepkg -f -s -i -p qemu.pkg --noconfirm
+    makepkg -f -s -i -p PKGBUILD --noconfirm
 
     ./bicycle-config/init.sh
     ./neovim-settings/init.sh

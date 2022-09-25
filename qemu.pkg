@@ -1,0 +1,11 @@
+pkgname=aszswaz-qemu
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="qemu intergration"
+arch=(x86_64)
+depends=(
+    qemu-common qemu-docs qemu-system-x86 qemu-audio-pa
+    qemu-hw-display-virtio-gpu qemu-hw-display-virtio-vga qemu-hw-display-virtio-vga-gl
+    qemu-hw-usb-host qemu-hw-usb-redirect
+    qemu-img qemu-virtiofsd qemu-ui-gtk
+)
