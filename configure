@@ -8,6 +8,7 @@ function build() {
     git submodule init
 
     makepkg -f -s -i -p qemu.pkg --noconfirm
+    rm -rf src pkg
     makepkg -f -s -i -p PKGBUILD --noconfirm
 
     ./bicycle-config/init.sh
