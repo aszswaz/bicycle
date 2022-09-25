@@ -14,8 +14,7 @@ depends=(
     qt5-base nlohmann-json python-pynvim
     neovim neovim-qt
     jq astyle autopep8 stylua texlive-latexindent-meta libxml2 shfmt prettier
-    openbsd-netcat v2ray curl
-    xclip
+    openbsd-netcat v2ray curl libqalculate xclip
     ttf-jetbrains-mono
     fish
 )
