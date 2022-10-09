@@ -18,7 +18,7 @@ namespace v2ray_ping {
 
         if (sub_pid == 0) {
             STAND_ERROR(chdir(workdir.c_str()) == -1);
-            STAND_ERROR(execlp("v2ray", "v2ray", "-config", config_path.c_str(), NULL));
+            STAND_ERROR(execlp("v2ray", "v2ray", "run", "-config", config_path.c_str(), NULL));
         } else {
             process->process_id = sub_pid;
         }
