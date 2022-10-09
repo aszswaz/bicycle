@@ -1,6 +1,6 @@
 pkgname=aszswaz-tools
 pkgver=v1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Some gadgets written by individuals."
 arch=(x86_64)
 # 软件包构建依赖
