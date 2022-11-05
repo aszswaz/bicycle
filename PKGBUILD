@@ -17,7 +17,7 @@ depends=(
     openbsd-netcat v2ray curl libqalculate xclip
     ttf-jetbrains-mono
     fish
-    bochs aszswaz-qemu
+    bochs qemu-full
 )
 
 build() {
