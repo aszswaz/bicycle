@@ -1,5 +1,7 @@
 # go proxy
 set -x GOPROXY https://goproxy.io/
+# go
+set -x GOPATH "$HOME/.cache/go"
 # gdb debug repository.
 set -x DEBUGINFOD_URLS https://debuginfod.archlinux.org
 # default editor
