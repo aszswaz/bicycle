@@ -24,3 +24,4 @@ alias node10="$HOME/.local/share/node-v10.16.3-linux-x64/bin/node"
 alias npm10="$HOME/.local/share/node-v10.16.3-linux-x64/lib/node_modules/npm/bin/npm-cli.js"
 alias npx10="$HOME/.local/share/node-v10.16.3-linux-x64/lib/node_modules/npm/bin/npx-cli.js"
 
+alias xclip='xclip -selection clipboard'
