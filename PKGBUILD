@@ -15,7 +15,6 @@ depends=(
     neovim neovim-qt
     jq astyle autopep8 stylua texlive-latexindent-meta libxml2 shfmt prettier
     openbsd-netcat v2ray curl libqalculate xclip
-    ttf-jetbrains-mono
     fish
     bochs qemu-full
 )
