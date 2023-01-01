@@ -18,6 +18,7 @@ add_subdirectory(./fsort)
 add_subdirectory(./v2ray-ping)
 add_subdirectory(./container)
 add_subdirectory(./thread-pool)
+add_subdirectory(./langfmt)
 
 # The target that needs to be installed when "make install" is executed.
 install(TARGETS message)
@@ -25,3 +26,4 @@ install(TARGETS fsort)
 install(TARGETS v2ray-ping)
 install(TARGETS container)
 install(TARGETS thread_pool)
+install(TARGETS langfmt)
