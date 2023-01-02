@@ -1,7 +1,6 @@
 alias cp="cp -v -r"
 alias rm="rm -rf"
 alias tree="tree -I '.git' -I 'node_modules' -I 'electron-builder'"
-alias ffplay="ffplay -vf 'drawtext=text='%{pts\:hms}':box=1:x=(w-tw)/2:y=h-(2*lh):boxborderw=4' -autoexit"
 alias rsync="rsync -rav"
 
 alias document="cd $HOME/Documents/notebook"
