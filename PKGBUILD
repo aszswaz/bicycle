@@ -11,6 +11,7 @@ depends=(
     nodejs python
     jdk-openjdk openjdk-doc openjdk-src jdk11-openjdk openjdk11-doc openjdk11-src jdk8-openjdk openjdk8-doc openjdk8-src
     ccls make cmake ctags python-pip git gdb valgrind
+    maven npm
     qt5-base nlohmann-json python-pynvim
     neovim neovim-qt
     jq astyle autopep8 stylua texlive-latexindent-meta libxml2 shfmt prettier
